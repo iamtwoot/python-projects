@@ -1,10 +1,12 @@
-# 👋 Hello! I`m Daniil, a beginner full-stack python developer.
+<h1 align='center'>👋Hello! I`m Daniil, a beginner full-stack<br>python developer.</h1>
 
 
 
 ## 🚀 My Projects
 
 These are all my educational projects. Each one covers different aspects of the Python, its external libraries, and related technologies such as databases, SQL and PostgreSQL, HTTP and APIs, Flask etc.
+
+
 
 ### 📌 Coffee Machine
 
