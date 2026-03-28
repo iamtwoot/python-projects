@@ -24,4 +24,4 @@ A simple console quiz game where you answer either True or False. The list of qu
 
 [Open project](QuizGame/)
 
-![quiz_game](readme_data\quiz_game_01.gif)
+![quiz_game](readme_data/quiz_game_01.gif)
