@@ -44,4 +44,4 @@ Main features of this projects are: user input via GUI, multiple object instance
 
 [Open](turtle_race/)
 
-![turtle race](readme_data\turtle_race_01.gif)
+![turtle race](readme_data/turtle_race_01.gif)
