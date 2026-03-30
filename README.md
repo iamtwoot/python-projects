@@ -10,7 +10,7 @@ These are all my educational projects. Each one covers different aspects of the 
 
 ### 📌 Coffee Machine
 
-This is a simple console program that simulates a coffee machine algorithm. It asks the user for their preferences, checks if there are enough resources to make a coffee, processes, and then makes the coffee.
+This is a simple console program that simulates a coffee machine algorithm. It asks the user for their preferences, checks if there are enough resources to make a coffee, processes coins, and then makes the coffee.
 
 [Open project](coffee_machine/)
 
