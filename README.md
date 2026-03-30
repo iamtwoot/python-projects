@@ -34,4 +34,4 @@ Creates dot paintings in the Damien Hirst style using `turtle` module. It also c
 
 [Open project](dot_painting/)
 
-![dot painting](readme_data\dot_painting_01.png)
+![dot painting](readme_data/dot_painting_01.png)
