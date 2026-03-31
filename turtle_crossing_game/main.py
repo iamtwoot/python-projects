@@ -31,5 +31,12 @@ while game_is_on:
 
     if player_object.finished():
         player_object.reset_position()
-        scoreboard.level += 1
+        scoreboard.update_score()
         car_speed *= 0.6
+
+    for car in cars:
+        if car.distance(player_object) < 20:
+            scoreboard.game_over()
+            game_is_on = False
+
+screen.exitonclick()
