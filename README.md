@@ -19,7 +19,7 @@ All projects sorted by recency, starting with the most recent.
 
 ### 📌 Pong Game
 
-Classic Pong game built with Python `turtle` module featuring real-time gameplay and object-oriented design. Developed a modular system with separate classes for paddles, ball, and scoreboard, controlled through a continuous game loop.
+Classic Pong game built with Python `turtle` module featuring real-time gameplay and object-oriented design. It has a modular system with separate classes for paddles, ball, and scoreboard, controlled through a continuous game loop.
 
 - Implemented game loop with variable speed (`time.sleep(ball.move_speed)`)
 - Designed ball physics using directional vectors (`x_step`, `y_step`)
