@@ -17,9 +17,10 @@ scoreboard = Scoreboard()
 screen.listen()
 screen.onkeypress(player_object.up, "Up")
 
+car_speed = 0.1
 game_is_on = True
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(car_speed)
     screen.update()
 
     for car in cars:
@@ -27,3 +28,8 @@ while game_is_on:
         if car.off_screen():
             cars.remove(car)
             cars.append(CarManager(y=random.randint(-250, 280)))
+
+    if player_object.finished():
+        player_object.reset_position()
+        scoreboard.level += 1
+        car_speed *= 0.6
