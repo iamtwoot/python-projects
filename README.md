@@ -82,5 +82,6 @@ Interactive Snake game built with Python `turtle` module. Focused on game archit
 - Object-oriented architecture (Snake, Food, Scoreboard)
 - Collision detection with walls, food and self
 - Dynamic state management
+- [Open](snake_game/)
 
 ![snake game](readme_data/snake_game_01.gif)
