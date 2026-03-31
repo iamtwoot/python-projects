@@ -4,8 +4,6 @@
 
 <br>
 
-<br>
-
 ## 🚀 Currently working with:
 
 - Python core and OOP
@@ -15,15 +13,11 @@
 
 <br>
 
-<br>
-
 ## 🧠 My Projects
 
 Each project focuses on a specific concept: from core Python logic to interactive applications and architecture design.
 
 All projects sorted by recency, starting with the most recent.
-
-<br>
 
 <br>
 
