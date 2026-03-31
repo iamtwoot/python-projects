@@ -11,15 +11,11 @@
 - Databases (PostgreSQL, SQL)
 - Flask (basic backend development)
 
-<br>
-
 ## 🧠 My Projects
 
 Each project focuses on a specific concept: from core Python logic to interactive applications and architecture design.
 
 All projects sorted by recency, starting with the most recent.
-
-<br>
 
 ### 📌 Pong Game
 
@@ -35,11 +31,7 @@ Classic Pong game built with Python `turtle` module featuring real-time gameplay
 
 ![pong game](readme_data/pong_game_01.gif)
 
-<br>
-
 ---
-
-<br>
 
 ### 📌 Snake Game
 
@@ -54,11 +46,7 @@ Interactive Snake game built with Python `turtle` module. Focused on game archit
 
 ![snake game](readme_data/snake_game_01.gif)
 
-<br>
-
 ---
-
-<br>
 
 ### 📌 Turtle Race
 
@@ -72,11 +60,7 @@ GUI-based race simulation with multiple independent objects.
 
 ![turtle race](readme_data/turtle_race_01.gif)
 
-<br>
-
 ---
-
-<br>
 
 ### 📌 Dot Painting
 
@@ -90,11 +74,7 @@ Generates dot paintings in the Damien Hirst style. Focused on working with graph
 
 ![dot painting](readme_data/dot_painting_01.png)
 
-<br>
-
 ---
-
-<br>
 
 ### 📌 Quiz Game
 
@@ -107,11 +87,7 @@ Console-based quiz game where you answer either True or False. The list of quest
 
 ![quiz_game](readme_data/quiz_game_01.gif)
 
-<br>
-
 ---
-
-<br>
 
 ### 📌 Coffee Machine
 
