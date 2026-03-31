@@ -33,6 +33,10 @@ Console simulation of a coffee machine workflow. Focused on program flow and log
 
 
 
+---
+
+
+
 ### 📌 Quiz Game
 
 Console-based quiz game where you answer either True or False. The list of questions is fixed and sourced from an Trivia DB API.
@@ -43,6 +47,10 @@ Console-based quiz game where you answer either True or False. The list of quest
 [Open](quiz_game/)
 
 ![quiz_game](readme_data/quiz_game_01.gif)
+
+
+
+---
 
 
 
@@ -60,6 +68,10 @@ Generates dot paintings in the Damien Hirst style. Focused on working with graph
 
 
 
+---
+
+
+
 ### 📌 Turtle Race
 
 GUI-based race simulation with multiple independent objects.
@@ -71,6 +83,10 @@ GUI-based race simulation with multiple independent objects.
 [Open](turtle_race/)
 
 ![turtle race](readme_data/turtle_race_01.gif)
+
+
+
+---
 
 
 
