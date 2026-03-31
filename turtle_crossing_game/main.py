@@ -10,8 +10,9 @@ screen.setup(width=600, height=600)
 screen.tracer(0)
 
 player_object = Player()
-cars = [CarManager(x=random.randint(-250, 280), y=random.randint(-230, 280)) for _ in range(25)]
+cars = [CarManager(x=random.randint(-250, 280), y=random.randint(-230, 240)) for _ in range(25)]
 
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkeypress(player_object.up, "Up")
