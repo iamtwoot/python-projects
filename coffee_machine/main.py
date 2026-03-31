@@ -30,7 +30,7 @@ class CoffeeMachine:
 
     def ask_user_request(self):
         drinks = "/".join(VALID_DRINKS)
-        return input(f"What would you like? ({drinks}): :")
+        return input(f"What would you like? ({drinks}): ")
 
 
     def is_resource_sufficient(self, order_ingredients):

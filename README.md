@@ -1,16 +1,31 @@
-<h1 align='center'>👋Hello! I`m Daniil, a beginner full-stack<br>python developer.</h1>
+<h1 align='center'>👋Hi, I`m Daniil!</h1>
+
+<h3 align="center">Python Developer focused on backend </h3>
 
 
 
-## 🚀 My Projects
+## 🚀 Currently working with:
 
-These are all my educational projects. Each one covers different aspects of the Python, its external libraries, and related technologies such as databases, SQL and PostgreSQL, HTTP and APIs, Flask etc.
+- Python core and OOP
+- API`s & HTTP
+- Databases (PostgreSQL, SQL)
+- Flask (basic backend development)
+
+
+
+## 🧠 My Projects
+
+Each project focuses on a specific concept: from core Python logic to interactive applications and architecture design.
 
 
 
 ### 📌 Coffee Machine
 
-This is a simple console program that simulates a coffee machine algorithm. It asks the user for their preferences, checks if there are enough resources to make a coffee, processes coins, and then makes the coffee.
+Console simulation of a coffee machine workflow. Focused on program flow and logic structuring.
+
+- State management (resources, money)
+- Input validation
+- Modular function design
 
 [Open](coffee_machine/)
 
@@ -20,7 +35,10 @@ This is a simple console program that simulates a coffee machine algorithm. It a
 
 ### 📌 Quiz Game
 
-A simple console quiz game where you answer either True or False. The list of questions is fixed, but it can be expanded using an API, such as Trivia DB, which is where these questions were sourced from.
+Console-based quiz game where you answer either True or False. The list of questions is fixed and sourced from an Trivia DB API.
+
+- Data handling and parsing
+- Expandable question system
 
 [Open](quiz_game/)
 
@@ -30,7 +48,11 @@ A simple console quiz game where you answer either True or False. The list of qu
 
 ### 📌 Dot Painting
 
-Creates dot paintings in the Damien Hirst style using `turtle` module. It also can extract colors from original pictures with `cologram` module.
+Generates dot paintings in the Damien Hirst style. Focused on working with graphics and external libraries.
+
+- Working with `turtle` graphics
+- Color extraction using `colorgram`
+- Grid-based rendering
 
 [Open](dot_painting/)
 
@@ -40,8 +62,25 @@ Creates dot paintings in the Damien Hirst style using `turtle` module. It also c
 
 ### 📌 Turtle Race
 
-Main features of this projects are: user input via GUI, multiple object instances with independent state, randomizes movement logic, winner detection and result output. The main purpose of this project was to handle multiple class instances simultaneously as well as working with basic GUI interactions in Python.
+GUI-based race simulation with multiple independent objects.
+
+- Multiple object instances with independent behavior
+- Event-driven user input
+- Randomized simulation logic
 
 [Open](turtle_race/)
 
 ![turtle race](readme_data/turtle_race_01.gif)
+
+
+
+### 📌 Snake Game
+
+Interactive Snake game built with Python `turtle` module. Focused on game architecture, OOP and real-time input handling.
+
+- Real-time game loop [`tracer(0)` + `update()`]
+- Object-oriented architecture (Snake, Food, Scoreboard)
+- Collision detection with walls, food and self
+- Dynamic state management
+
+![snake game](readme_data/snake_game_01.gif)
