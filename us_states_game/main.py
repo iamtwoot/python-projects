@@ -26,9 +26,8 @@ while len(correct_guesses) < 50:
     ).title()
 
     if answer_state == "Exit":
-        for state in all_states:
-            states_to_learn = [s for s in all_states if s not in correct_guesses]
-            pd.DataFrame(states_to_learn).to_csv("states_to_learn.csv")
+        states_to_learn = [s for s in all_states if s not in correct_guesses]
+        pd.DataFrame(states_to_learn).to_csv("states_to_learn.csv")
         break
 
     if answer_state in all_states:
