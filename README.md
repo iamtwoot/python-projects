@@ -17,7 +17,7 @@ Each project focuses on a specific concept: from core Python logic to interactiv
 
 All projects sorted by recency, starting with the most recent.
 
-
+---
 
 ### 📌 Turtle Crossing Game
 
@@ -29,7 +29,7 @@ Arcade-style game where the player avoids moving obstacles and progresses throug
 
 ![turtle crossing](readme_data/turtle_crossing_01.gif)
 
-
+---
 
 ### 📌 Pong Game
 
