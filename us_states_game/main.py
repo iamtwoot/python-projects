@@ -1,12 +1,12 @@
 import turtle
 import pandas as pd
 
-def write_state(state, x_cor, y_cor):
+def write_state(state_name, x_cor, y_cor):
     new_state = turtle.Turtle()
     new_state.penup()
     new_state.hideturtle()
     new_state.goto(x_cor, y_cor)
-    new_state.write(state)
+    new_state.write(state_name)
 
 screen = turtle.Screen()
 screen.title("U.S. States Game")
@@ -25,6 +25,12 @@ while len(correct_guesses) < 50:
         prompt="What`s another state name?",
     ).title()
 
+    if answer_state == "Exit":
+        for state in all_states:
+            states_to_learn = [s for s in all_states if s not in correct_guesses]
+            pd.DataFrame(states_to_learn).to_csv("states_to_learn.csv")
+        break
+
     if answer_state in all_states:
         state_data = data[data.state == answer_state]
         write_state(
@@ -34,5 +40,3 @@ while len(correct_guesses) < 50:
         )
         correct_guesses.append(answer_state)
         score += 1
-
-screen.exitonclick()
