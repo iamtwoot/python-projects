@@ -17,6 +17,20 @@ Each project focuses on a specific concept: from core Python logic to interactiv
 
 All projects sorted by recency, starting with the most recent.
 
+
+
+### 📌 Turtle Crossing Game
+
+Arcade-style game where the player avoids moving obstacles and progresses through increasing difficulty levels.
+
+- Managed dynamic object lifecycle using a list of car instances
+- Implemented probabilistic spawning logic
+- Designed difficulty scaling via incremental speed increase
+
+![turtle crossing](readme_data/turtle_crossing_01.gif)
+
+
+
 ### 📌 Pong Game
 
 Classic Pong game built with Python `turtle` module featuring real-time gameplay and object-oriented design. It has a modular system with separate classes for paddles, ball, and scoreboard, controlled through a continuous game loop.
