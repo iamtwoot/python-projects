@@ -11,5 +11,10 @@ ENV/
 env.bak/
 venv.bak/
 
-#IDE
+# IDE
 .idea
+
+# Practice projects
+pracc/
+
+
