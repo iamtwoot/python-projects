@@ -30,7 +30,7 @@ while len(correct_guesses) < 50:
         pd.DataFrame(states_to_learn).to_csv("states_to_learn.csv")
         break
 
-    if answer_state in all_states:
+    if answer_state in all_states and answer_state not in correct_guesses:
         state_data = data[data.state == answer_state]
         write_state(
             answer_state,
