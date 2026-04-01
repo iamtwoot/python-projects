@@ -19,6 +19,19 @@ All projects sorted by recency, starting with the most recent.
 
 ---
 
+### 📌 Automated Letter Generator
+
+Simple Python script that generates personalized letters for multiple recipients.
+
+- File I/O ('open', 'with' context manager)
+- Reading from and writing to files
+- Navigating folder structures
+- String methods ('strip', 'replace') for text manipulation
+
+[Open](mail_merge/)
+
+---
+
 ### 📌 Turtle Crossing Game
 
 Arcade-style game where the player avoids moving obstacles and progresses through increasing difficulty levels.
@@ -26,6 +39,8 @@ Arcade-style game where the player avoids moving obstacles and progresses throug
 - Managed dynamic object lifecycle using a list of car instances
 - Implemented probabilistic spawning logic
 - Designed difficulty scaling via incremental speed increase
+
+[Open](turtle_crossing_game/)
 
 ![turtle crossing](readme_data/turtle_crossing_01.gif)
 
