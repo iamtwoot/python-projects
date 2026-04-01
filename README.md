@@ -19,6 +19,19 @@ All projects sorted by recency, starting with the most recent.
 
 ---
 
+### 📌 NATO Phonetic Alphabet Converter
+
+A Python script that converts user input into its NATO phonetic alphabet representation using structured data.
+
+- Loaded CSV data into a `DataFrame`
+- Transformed tabular data into a dictionary for O(1) lookups
+- Used dictionary comprehension for efficient data mapping
+- Applied list comprehension to convert input string into phonetic representation
+
+[Open](nato_alphabet/)
+
+---
+
 ### 📌 U.S. States Guessing Game
 
 Interactive geography game that combines data processing with visual feedback on the map. This game reads data from a CSV file and dynamically displays correct answers on a map using coordinates.
