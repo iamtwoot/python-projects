@@ -19,6 +19,20 @@ All projects sorted by recency, starting with the most recent.
 
 ---
 
+### 📌 U.S. States Guessing Game
+
+Interactive geography game that combines data processing with visual feedback on the map. This game reads data from a CSV file and dynamically displays correct answers on a map using coordinates.
+
+- Loaded and processed structured data using `pandas`
+- Mapped state names to coordinates from a dataset
+- Using filtering (`data[data.state == answer]`) to retrieve specific rows
+
+[Open](us_states_game/)
+
+![us states game](readme_data/us_states_game_01.gif)
+
+---
+
 ### 📌 Automated Letter Generator
 
 Simple Python script that generates personalized letters for multiple recipients.
