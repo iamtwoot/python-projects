@@ -1,4 +1,3 @@
-import random
 import time
 from turtle import Screen
 from player import Player
@@ -9,34 +8,31 @@ screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
 
-player_object = Player()
-cars = [CarManager(x=random.randint(-250, 280), y=random.randint(-230, 240)) for _ in range(25)]
-
+player = Player()
+car_manager = CarManager()
 scoreboard = Scoreboard()
 
 screen.listen()
-screen.onkeypress(player_object.up, "Up")
+screen.onkeypress(player.up, "Up")
 
-car_speed = 0.1
 game_is_on = True
 while game_is_on:
-    time.sleep(car_speed)
+    time.sleep(0.1)
     screen.update()
 
-    for car in cars:
-        car.move()
-        if car.off_screen():
-            cars.remove(car)
-            cars.append(CarManager(y=random.randint(-250, 280)))
+    car_manager.create_car()
+    car_manager.move_cars()
 
-    if player_object.finished():
-        player_object.reset_position()
-        scoreboard.update_score()
-        car_speed *= 0.6
-
-    for car in cars:
-        if car.distance(player_object) < 20:
+    # Detect collision with car
+    for car in car_manager.all_cars:
+        if car.distance(player) < 20:
             scoreboard.game_over()
             game_is_on = False
+
+    # Detect successful crossing
+    if player.finished():
+        player.reset_position()
+        car_manager.level_up()
+        scoreboard.update_score()
 
 screen.exitonclick()
