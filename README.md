@@ -11,13 +11,17 @@
 - Databases (PostgreSQL, SQL)
 - Flask (basic backend development)
 
-## 🧠 My Projects
+## ⭐ Featured
 
-Each project focuses on a specific concept: from core Python logic to interactive applications and architecture design.
+These projects best represent my current level and skills:
 
-All projects sorted by recency, starting with the most recent.
+📌 Password Manager  — data handling, validation, file storage
+📌 Pomodoro Timer — event-driven programming, state management
+📌 NATO Converter — data processing, error handling
 
----
+## 🧪 My Learning Projects
+
+Early projects created during my learning journey. They reflect my progress and understanding of core concepts. Each project focuses on a specific concept: from core Python logic to interactive applications and architecture design.
 
 ### 📌 Password Manager (Tkinter GUI)
 
@@ -56,12 +60,12 @@ A desktop application implementing the Pomodoro time management technique with a
 
 A simple desktop application that converts kilometers to miles through a graphical user interface.
 
-- Built a window layout using the grit geometry manager
+- Built a window layout using the grid geometry manager
 - Handled user input through Entry widget
 - Connected UI with logic using callback function (`command`)
 - Updated interface dynamically using widget configuration
 
-[Open](nato_alphabet/)
+[Open](converter/)
 
 ![km_to_miles_calc_01](readme_data/km_to_miles_calc_01.gif)
 
@@ -76,9 +80,10 @@ A Python script that converts user input into its NATO phonetic alphabet represe
 - Used dictionary comprehension for efficient data mapping
 - Applied list comprehension to convert input string into phonetic representation
 
-#### 🚀Improvements:
+#### 🚀 Improvements:
 
 - Implemented input validation using try/except to handle invalid characters
+- Improved user interaction with retry mechanism
 
 [Open](nato_alphabet/)
 
