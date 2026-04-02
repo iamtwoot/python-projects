@@ -41,7 +41,7 @@ A desktop application for generating and securely storing passwords with basic v
 A desktop application implementing the Pomodoro time management technique with automated session control.
 
 - Implemented session management using a global repetition counter
-- Built a countdown mechanism using tkinter`s `after` method
+- Built a countdown mechanism using tkinter\`s `after` method
 - Designed conditional logic to alternate between work and break sessions
 - Dynamically updated UI elements (labels, canvas) based on application state
 - Managed timer lifecycle (start/reset) to prevent overlapping scheduled events
