@@ -17,21 +17,21 @@ canvas.grid(row=0, column=1)
 
 # Row 1
 website_label = Label(text="Website")
-website_label.grid(row=1, column=0)
+website_label.grid(row=1, column=0, sticky="W")
 
 website_entry = Entry()
 website_entry.grid(row=1, column=1, columnspan=2, sticky="ew")
 
 # Row 2
 email_label = Label(text="Email/Username")
-email_label.grid(row=2, column=0)
+email_label.grid(row=2, column=0, sticky="W")
 
 email_entry = Entry()
 email_entry.grid(row=2, column=1, columnspan=2, sticky="ew")
 
 # Row 3
 password_label = Label(text="Password")
-password_label.grid(row=3, column=0)
+password_label.grid(row=3, column=0, sticky="W")
 
 password_entry = Entry()
 password_entry.grid(row=3, column=1, sticky="ew")
