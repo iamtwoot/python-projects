@@ -19,7 +19,23 @@ All projects sorted by recency, starting with the most recent.
 
 ---
 
-### 📌 Kilometers to Miles Converter
+### 📌 Pomodoro Timer (Tkinter GUI)
+
+A desktop application implementing the Pomodoro time management technique with automated session control.
+
+- Implemented session management using a global repetition counter
+- Built a countdown mechanism using tkinter`s `after` method
+- Designed conditional logic to alternate between work and break sessions
+- Dynamically updated UI elements (labels, canvas) based on application state
+- Managed timer lifecycle (start/reset) to prevent overlapping scheduled events
+
+[Open](pomodoro_timer/)
+
+![pomodoro_timer](readme_data/pomodoro_01.gif)
+
+---
+
+### 📌 Kilometers to Miles Converter (Tkinter GUI)
 
 A simple desktop application that converts kilometers to miles through a graphical user interface.
 
@@ -28,9 +44,9 @@ A simple desktop application that converts kilometers to miles through a graphic
 - Connected UI with logic using callback function (`command`)
 - Updated interface dynamically using widget configuration
 
-![km_to_miles_calc_01](readme_data/km_to_miles_calc_01.gif)
-
 [Open](nato_alphabet/)
+
+![km_to_miles_calc_01](readme_data/km_to_miles_calc_01.gif)
 
 ---
 
