@@ -1,18 +1,28 @@
 from tkinter import *
 import math
+
 # ---------------------------- CONSTANTS ------------------------------- #
+
 PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 20
+WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
-CHECKMARK = "✔"
 reps = 0
+timer = ""
 
 # ---------------------------- TIMER RESET ------------------------------- # 
+
+def reset_timer():
+    window.after_cancel(timer)
+    canvas.itemconfig(timer_text, text="00:00")
+    timer_label.config(text="Timer")
+    checkmark.config(text="")
+    global reps
+    reps = 0
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
@@ -45,9 +55,15 @@ def count_down(count):
 
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
-        window.after(1000, count_down, count - 1)
+        global timer
+        timer = window.after(1000, count_down, count - 1)
     else:
         start_timer()
+        marks = ""
+        work_sessions = math.floor(reps/2)
+        for _ in range(work_sessions):
+            marks += "✔"
+        checkmark.config(text=marks)
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -67,13 +83,11 @@ timer_label.grid(row=0, column=1)
 start_button = Button(text="start", command=start_timer)
 start_button.grid(row=2, column=0)
 
-reset_button = Button(text="reset")
+reset_button = Button(text="reset", command=reset_timer)
 reset_button.grid(row=2, column=3)
 
-checkmark = Label(text=CHECKMARK,fg=GREEN, bg=YELLOW)
+checkmark = Label(fg=GREEN, bg=YELLOW)
 checkmark.grid(row=3, column=1)
-
-
 
 window.mainloop()
 
