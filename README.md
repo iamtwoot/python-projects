@@ -19,6 +19,23 @@ All projects sorted by recency, starting with the most recent.
 
 ---
 
+### 📌 Password Manager (Tkinter GUI)
+
+A desktop application for generating and securely storing passwords with basic validation and user interaction.
+
+- Implemented password generator using randomization and list manipulation
+- Designed form validation to prevent empty submissions
+- Integrated `messagebox` for user confirmation and error handling
+- Stored structured data in a local file using context managers (`with open`)
+- Connected UI components with application logic via event-driven callbacks
+- Clipboard integration for quick password copying
+
+[Open](password_manager/)
+
+![password_manager](readme_data/password_manager_01.gif)
+
+---
+
 ### 📌 Pomodoro Timer (Tkinter GUI)
 
 A desktop application implementing the Pomodoro time management technique with automated session control.
