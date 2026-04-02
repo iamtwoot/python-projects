@@ -76,6 +76,10 @@ A Python script that converts user input into its NATO phonetic alphabet represe
 - Used dictionary comprehension for efficient data mapping
 - Applied list comprehension to convert input string into phonetic representation
 
+#### 🚀Improvements:
+
+- Implemented input validation using try/except to handle invalid characters
+
 [Open](nato_alphabet/)
 
 ---
