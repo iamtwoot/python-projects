@@ -19,6 +19,21 @@ All projects sorted by recency, starting with the most recent.
 
 ---
 
+### 📌 Kilometers to Miles Converter
+
+A simple desktop application that converts kilometers to miles through a graphical user interface.
+
+- Built a window layout using the grit geometry manager
+- Handled user input through Entry widget
+- Connected UI with logic using callback function (`command`)
+- Updated interface dynamically using widget configuration
+
+![km_to_miles_calc_01](readme_data/km_to_miles_calc_01.gif)
+
+[Open](nato_alphabet/)
+
+---
+
 ### 📌 NATO Phonetic Alphabet Converter
 
 A Python script that converts user input into its NATO phonetic alphabet representation using structured data.
