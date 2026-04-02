@@ -34,6 +34,9 @@ def start_timer():
     short_break_sec = SHORT_BREAK_MIN * 60
     long_break_sec = LONG_BREAK_MIN * 60
 
+    window.attributes("-topmost", 1)
+    window.attributes("-topmost", 0)
+
     if reps % 8 == 0:
         timer_label.config(text=f"Break", fg=RED)
         count_down(long_break_sec)
