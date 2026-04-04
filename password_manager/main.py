@@ -59,6 +59,35 @@ def save():
             password_entry.delete(0, END)
 
 
+def find_password():
+
+    user_input = website_entry.get()
+
+    try:
+        with open ("data.json", "r") as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showinfo(
+            title="Error",
+            message="No Data File Found",
+        )
+    else:
+        data_info = data.get(user_input)
+        print(data_info)
+        if not data_info:
+            messagebox.showinfo(
+                title="Error",
+                message="No details for the website exists",
+            )
+        else:
+            messagebox.showinfo(
+                title=user_input,
+                message=f"Email: {data_info['email']}\n"
+                        f"Password: {data_info['password']}",
+            )
+
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
@@ -78,9 +107,8 @@ website_entry = Entry()
 website_entry.grid(row=1, column=1, sticky="we")
 website_entry.focus()
 
-search_button = Button(text="Search")
+search_button = Button(text="Search", command=find_password)
 search_button.grid(row=1, column=2, sticky="we")
-
 
 # Row 2
 email_label = Label(text="Email/Username")
