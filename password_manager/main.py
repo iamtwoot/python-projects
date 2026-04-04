@@ -58,10 +58,11 @@ def save():
             website_entry.delete(0, END)
             password_entry.delete(0, END)
 
+# ---------------------------- FIND PASSWORD ------------------------------- #
 
 def find_password():
 
-    user_input = website_entry.get()
+    website = website_entry.get()
 
     try:
         with open ("data.json", "r") as data_file:
@@ -72,8 +73,7 @@ def find_password():
             message="No Data File Found",
         )
     else:
-        data_info = data.get(user_input)
-        print(data_info)
+        data_info = data.get(website)
         if not data_info:
             messagebox.showinfo(
                 title="Error",
@@ -81,12 +81,10 @@ def find_password():
             )
         else:
             messagebox.showinfo(
-                title=user_input,
+                title=website,
                 message=f"Email: {data_info['email']}\n"
                         f"Password: {data_info['password']}",
             )
-
-
 
 # ---------------------------- UI SETUP ------------------------------- #
 
