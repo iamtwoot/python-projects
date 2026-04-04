@@ -1,9 +1,19 @@
+import random
 from tkinter import *
+import pandas as pd
 
 BACKGROUND_COLOR = "#B1DDC6"
 MAIN_FONT = ("Ariel", 40, "italic")
 WORD_FONT = ("Ariel", 60, "bold")
 
+# -------------------------- GENERATE WORDS --------------------------- #
+data = pd.read_csv("data/russian_words.csv")
+to_learn = data.to_dict("records")
+
+def next_card():
+    current_card = random.choice(to_learn)
+    canvas.itemconfig(card_title, text="English")
+    canvas.itemconfig(card_word, text=current_card["Eng"])
 
 # -------------------------- SETUP UI --------------------------------- #
 window = Tk()
@@ -21,18 +31,19 @@ canvas = Canvas(width=800, height=526, highlightthickness=0, bg=BACKGROUND_COLOR
 canvas.create_image(400, 263, image=card_front_img)
 canvas.grid(row=0, column=0, columnspan=2)
 
-canvas.create_text(400, 150, text="language", font=MAIN_FONT)
-canvas.create_text(400, 263, text="word", font=WORD_FONT)
+card_title = canvas.create_text(400, 150, text="", font=MAIN_FONT)
+card_word = canvas.create_text(400, 263, text="", font=WORD_FONT)
 
 # Buttons
-wrong_button = Button(image=wrong_img, highlightthickness=0)
+wrong_button = Button(image=wrong_img, highlightthickness=0, command=next_card)
 wrong_button.grid(row=1, column=0)
 wrong_button.config(borderwidth=0)
 
-right_button = Button(image=right_img, highlightthickness=0)
+right_button = Button(image=right_img, highlightthickness=0, command=next_card)
 right_button.grid(row=1, column=1)
 right_button.config(borderwidth=0)
 
+next_card()
 
 window.mainloop()
 
