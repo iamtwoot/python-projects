@@ -11,6 +11,16 @@
 - Databases (PostgreSQL, SQL)
 - Flask (basic backend development)
 
+## ⭐ Featured
+
+These projects best represent my current level and skills.
+
+📌 Password Manager [⬇️](#password-manager)
+
+📌 Pomodoro Timer [⬇️](#pomodoro-timer)
+
+📌 NATO Converter [⬇️](#nato-alphabet)
+
 ## 🧪 My Learning Projects
 
 Early projects created during my learning journey. They reflect my progress and understanding of core concepts. Each project focuses on a specific concept: from core Python logic to interactive applications and architecture design.
@@ -34,7 +44,7 @@ A desktop application for generating, storing, and retrieving passwords with str
 
 ---
 
-### 📌 Pomodoro Timer (Tkinter GUI)
+### <a id="pomodoro-timer"></a>📌 Pomodoro Timer (Tkinter GUI)
 
 A desktop application implementing the Pomodoro time management technique with automated session control.
 
@@ -65,7 +75,7 @@ A simple desktop application that converts kilometers to miles through a graphic
 
 ---
 
-### 📌 NATO Phonetic Alphabet Converter
+### <a id="nato-alphabet"></a>📌 NATO Phonetic Alphabet Converter
 
 A Python script that converts user input into its NATO phonetic alphabet representation using structured data.
 
