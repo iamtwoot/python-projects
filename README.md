@@ -15,11 +15,11 @@
 
 These projects best represent my current level and skills.
 
-📌 Password Manager [⬇️](#password-manager)
+📌 [Password Manager](#password-manager)
 
-📌 Pomodoro Timer [⬇️](#pomodoro-timer)
+📌 [Pomodoro Timer](#pomodoro-timer)
 
-📌 NATO Converter [⬇️](#nato-alphabet)
+📌 [NATO Converter](#nato-alphabet)
 
 ## 🧪 My Learning Projects
 
