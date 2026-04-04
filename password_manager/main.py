@@ -54,11 +54,9 @@ def save():
         else:
             with open ("data.json", "w") as data_file:
                 json.dump(data, data_file, indent=4)
-
-
-
-        website_entry.delete(0, END)
-        password_entry.delete(0, END)
+        finally:
+            website_entry.delete(0, END)
+            password_entry.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
