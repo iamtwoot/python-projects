@@ -1,3 +1,4 @@
+import json
 from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
@@ -29,6 +30,12 @@ def save():
     website = website_entry.get()
     email = email_entry.get()
     password = password_entry.get()
+    new_data = {
+        website: {
+            "email": email,
+            "password": password,
+        }
+    }
 
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(
@@ -37,9 +44,18 @@ def save():
         )
 
     else:
-        with open ("data.txt", "a") as data_file:
-            new_entry = f"{website} | {email} | {password}\n"
-            data_file.write(new_entry)
+        try:
+            with open ("data.json", "r") as data_file:
+                data = json.load(data_file)
+                data.update(new_data)
+        except FileNotFoundError:
+            with open ("data.json", "w") as data_file:
+                json.dump(new_data, data_file, indent=4)
+        else:
+            with open ("data.json", "w") as data_file:
+                json.dump(data, data_file, indent=4)
+
+
 
         website_entry.delete(0, END)
         password_entry.delete(0, END)
