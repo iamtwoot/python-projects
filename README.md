@@ -11,26 +11,20 @@
 - Databases (PostgreSQL, SQL)
 - Flask (basic backend development)
 
-## ⭐ Featured
-
-These projects best represent my current level and skills:
-
-📌 Password Manager  — data handling, validation, file storage
-📌 Pomodoro Timer — event-driven programming, state management
-📌 NATO Converter — data processing, error handling
-
 ## 🧪 My Learning Projects
 
 Early projects created during my learning journey. They reflect my progress and understanding of core concepts. Each project focuses on a specific concept: from core Python logic to interactive applications and architecture design.
 
-### 📌 Password Manager (Tkinter GUI)
+### <a id="password-manager"></a>📌 Password Manager (Tkinter GUI)
 
-A desktop application for generating and securely storing passwords with basic validation and user interaction.
+A desktop application for generating, storing, and retrieving passwords with structured data persistence and user-friendly interaction.
 
 - Implemented password generator using randomization and list manipulation
 - Designed form validation to prevent empty submissions
+- Stored data persistently in JSON format
+- Implemented search functionality to retrieve saved credentials
+- Handled file operations and errors using try/except (`FileNotFoundError`)
 - Integrated `messagebox` for user confirmation and error handling
-- Stored structured data in a local file using context managers (`with open`)
 - Connected UI components with application logic via event-driven callbacks
 - Clipboard integration for quick password copying
 
