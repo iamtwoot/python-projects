@@ -72,11 +72,15 @@ canvas.grid(row=0, column=1)
 
 # Row 1
 website_label = Label(text="Website")
-website_label.grid(row=1, column=0, sticky="W")
+website_label.grid(row=1, column=0, sticky="we")
 
 website_entry = Entry()
-website_entry.grid(row=1, column=1, columnspan=2, sticky="ew")
+website_entry.grid(row=1, column=1, sticky="we")
 website_entry.focus()
+
+search_button = Button(text="Search")
+search_button.grid(row=1, column=2, sticky="we")
+
 
 # Row 2
 email_label = Label(text="Email/Username")
