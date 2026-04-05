@@ -10,7 +10,7 @@ class Cards:
             data = pd.read_csv("data/russian_words.csv")
 
         self.to_learn = data.to_dict("records")
-        self.current_card = None
+        self.current_card = random.choice(self.to_learn)
 
 
     def next_card(self):
@@ -20,4 +20,8 @@ class Cards:
 
     def mark_known(self):
         self.to_learn.remove(self.current_card)
+        self.save_files()
+
+
+    def save_files(self):
         pd.DataFrame(self.to_learn).to_csv("data/to_learn.csv", index=False)
