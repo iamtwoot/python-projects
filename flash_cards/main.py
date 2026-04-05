@@ -3,8 +3,8 @@ from tkinter import messagebox
 from cards import Cards
 
 BACKGROUND_COLOR = "#B1DDC6"
-MAIN_FONT = ("Ariel", 40, "italic")
-WORD_FONT = ("Ariel", 60, "bold")
+MAIN_FONT = ("Arial", 40, "italic")
+WORD_FONT = ("Arial", 60, "bold")
 
 class FlashcardApp:
 
