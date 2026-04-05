@@ -15,15 +15,34 @@
 
 These projects best represent my current level and skills.
 
+📌 [Flash Cards App](#flash-cards-app)
+
 📌 [Password Manager](#password-manager)
 
 📌 [Pomodoro Timer](#pomodoro-timer)
 
-📌 [NATO Converter](#nato-alphabet)
-
 ## 🧪 My Learning Projects
 
 Early projects created during my learning journey. They reflect my progress and understanding of core concepts. Each project focuses on a specific concept: from core Python logic to interactive applications and architecture design.
+
+---
+
+### <a id="flash-cards-app"></a>📌 Flash Cards App (Tkinter GUI)
+
+A desktop flashcard application for learning languages with spaced repetition logic and persistent progress tracking.
+
+- Separated UI and application logic into different classes (`FlashcardApp` / `Cards`)
+- Implemented timed card flipping using tkinter `after`
+- Built learning flow with "known / unknown" actions
+- Persisted user progress between sessions using CSV files
+- Applied exception handling for fallback data loading
+- Managed dynamic state (current card, remaining words)
+
+![flash_cards_01](readme_data/flash_cards_01.gif)
+
+[Open](flash_cards/)
+
+---
 
 ### <a id="password-manager"></a>📌 Password Manager (Tkinter GUI)
 
