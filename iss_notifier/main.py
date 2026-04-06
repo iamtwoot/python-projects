@@ -1,59 +1,74 @@
+import os
 import smtplib
 import time
 import requests
 from datetime import datetime
 from zoneinfo import ZoneInfo
-import os
+from dotenv import load_dotenv
 
-def get_env(name):
-    value = os.getenv(name)
-    if value is None:
-        raise ValueError(f"Environment variable {name} not set.")
-    return value
+load_dotenv()
 
-MY_EMAIL = get_env("MY_EMAIL")
-MY_PASSWORD = get_env("MY_PASSWORD")
+MY_EMAIL = os.getenv("MY_EMAIL")
+MY_PASSWORD = os.getenv("MY_PASSWORD")
+
+if not MY_EMAIL or not MY_PASSWORD:
+    raise ValueError("Email or password not set in environment variables")
 
 MY_LAT = 56.376859 # Your latitude
 MY_LONG = 44.042414 # Your longitude
 
-response = requests.get(url="http://api.open-notify.org/iss-now.json")
-response.raise_for_status()
-data = response.json()
 
-iss_latitude = float(data["iss_position"]["latitude"])
-iss_longitude = float(data["iss_position"]["longitude"])
+def get_iss_position():
+    response = requests.get(url="http://api.open-notify.org/iss-now.json")
+    response.raise_for_status()
+    data = response.json()
 
-#Your position is within +5 or -5 degrees of the ISS position.
-def is_position_within(iss_lat, iss_long):
-    if ((MY_LAT - 5 < iss_lat < MY_LAT + 5) and
-            (MY_LONG - 5 < iss_long < MY_LONG + 5)):
+    iss_latitude = float(data["iss_position"]["latitude"])
+    iss_longitude = float(data["iss_position"]["longitude"])
+    return iss_latitude, iss_longitude
+
+
+def is_position_within(latitude, longitude):
+    print(f"My position: {MY_LAT}, {MY_LONG}")
+    print(f"ISS position: {latitude}, {longitude}")
+    if ((MY_LAT - 5 < latitude < MY_LAT + 5) and
+            (MY_LONG - 5 < longitude < MY_LONG + 5)):
         return True
     return False
 
-parameters = {
-    "lat": MY_LAT,
-    "lng": MY_LONG,
-    "formatted": 0,
-}
+def is_night():
+    time_now = datetime.now(ZoneInfo("Europe/Moscow")).hour
 
-response = requests.get("https://api.sunrise-sunset.org/json", params=parameters)
-response.raise_for_status()
-data = response.json()
-sunrise = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
-sunset = int(data["results"]["sunset"].split("T")[1].split(":")[0])
+    parameters = {
+        "lat": MY_LAT,
+        "lng": MY_LONG,
+        "formatted": 0,
+    }
 
-time_now = datetime.now(ZoneInfo("Europe/Moscow")).hour
+    response = requests.get("https://api.sunrise-sunset.org/json", params=parameters)
+    response.raise_for_status()
+    data = response.json()
+    sunrise = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
+    sunset = int(data["results"]["sunset"].split("T")[1].split(":")[0])
+
+    if time_now >= sunset or time_now <= sunrise:
+        return True
+    return False
+
+def send_email():
+    with smtplib.SMTP('smtp.gmail.com') as connection:
+        connection.starttls()
+        connection.login(MY_EMAIL, MY_PASSWORD)
+        connection.sendmail(
+            from_addr=MY_EMAIL,
+            to_addrs=MY_EMAIL,
+            msg=f"Subject: Look up!\n\nLook up! ISS is currently flying above you.",
+        )
 
 while True:
-    if is_position_within(iss_latitude, iss_longitude):
-        if sunset < time_now < sunrise:
-            with smtplib.SMTP('smtp.gmail.com') as connection:
-                connection.starttls()
-                connection.login(MY_EMAIL, MY_PASSWORD)
-                connection.sendmail(
-                    from_addr=MY_EMAIL,
-                    to_addrs=MY_EMAIL,
-                    msg=f"Subject: Look up!\n\nLook up! ISS is currently flying above you.",
-                )
+    iss_lat, iss_long = get_iss_position()
+    if is_position_within(iss_lat, iss_long):
+        if is_night():
+            send_email()
+
     time.sleep(60)
