@@ -1,4 +1,3 @@
-##################### Extra Hard Starting Project ######################
 import os
 import random
 import smtplib
@@ -11,6 +10,7 @@ MY_EMAIL = os.getenv("MY_EMAIL")
 MY_PASSWORD = os.getenv("MY_PASSWORD")
 
 birthdays = pd.read_csv("birthdays.csv")
+current_date = dt.datetime.today()
 
 for index, row in birthdays.iterrows():
     bd_date = dt.datetime(
@@ -18,8 +18,6 @@ for index, row in birthdays.iterrows():
         month=row["month"],
         day=row["day"],
     )
-
-    current_date = dt.datetime.today()
 
     if bd_date.day  == current_date.day and bd_date.month == current_date.month:
 
