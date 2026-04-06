@@ -15,6 +15,8 @@
 
 These projects best represent my current level and skills.
 
+📌 [ISS Overhead Notifier](#iss-notifier)
+
 📌 [Flash Cards App](#flash-cards-app)
 
 📌 [Password Manager](#password-manager)
@@ -24,6 +26,21 @@ These projects best represent my current level and skills.
 ## 🧪 My Learning Projects
 
 Early projects created during my learning journey. They reflect my progress and understanding of core concepts. Each project focuses on a specific concept: from core Python logic to interactive applications and architecture design.
+
+---
+
+### <a id="iss-notifier"></a>📌 ISS Overhead Notifier
+
+A Python automation script that checks the position of the International Space Station (ISS) relative to your location and sends an email alert when it is overhead during nighttime.
+
+- Fetched live ISS position using the Open Notify API (`http://api.open-notify.org/iss-now.json`)
+- Determined day/night cycle using the Sunrise-Sunset API
+- Configurable location with latitude and longitude
+- Automated email notifications via SMTP when ISS is overhead
+- Secured sensitive credentials with environment variables and `dotenv`
+- Repeated checks every 60 seconds with time-based logic
+
+[Open](iss_notifier/)
 
 ---
 
