@@ -1,14 +1,15 @@
 ##################### Extra Hard Starting Project ######################
 import os
 import random
+import smtplib
 import pandas as pd
 import datetime as dt
+from dotenv import load_dotenv
 
+load_dotenv()
+MY_EMAIL = os.getenv("MY_EMAIL")
+MY_PASSWORD = os.getenv("MY_PASSWORD")
 
-
-# 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with the person's actual name from birthdays.csv
-
-# 4. Send the letter generated in step 3 to that person's email address.
 birthdays = pd.read_csv("birthdays.csv")
 
 for index, row in birthdays.iterrows():
@@ -29,8 +30,7 @@ for index, row in birthdays.iterrows():
             text = letter_file.read()
             text = text.replace("[NAME]", row["name"])
 
-        # with open(f"letter_templates/{random_letter}", "w") as letter_file:
-        #     letter_file.write(text)
-
-
-
+        with smtplib.SMTP("smtp.gmail.com") as connection:
+            connection.starttls()
+            connection.login(user=MY_EMAIL, password=MY_PASSWORD)
+            connection.sendmail(from_addr=MY_EMAIL, to_addrs=row["email"], msg=f"Subject:Happy Birthday!\n\n{text}")
