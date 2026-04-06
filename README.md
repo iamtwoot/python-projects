@@ -27,6 +27,21 @@ Early projects created during my learning journey. They reflect my progress and 
 
 ---
 
+### 📌 Birthday Wisher (Email Automation)
+
+A Python automation script that sends personalized birthday emails using data-driven templates and scheduled date checks.
+
+- Loaded and processed user data from CSV using `pandas`
+- Implemented date-based logic to detect matching birthdays
+- Generated personalized emails using text templates
+- Randomly selected message templates for variation
+- Used environment variables to securely store credentials
+- Sent emails via SMTP with TLS encryption
+
+[Open](birthday_wisher/)
+
+---
+
 ### <a id="flash-cards-app"></a>📌 Flash Cards App (Tkinter GUI)
 
 A desktop flashcard application for learning languages with spaced repetition logic and persistent progress tracking.
