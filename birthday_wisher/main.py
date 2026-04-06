@@ -3,11 +3,15 @@ import random
 import smtplib
 import pandas as pd
 import datetime as dt
-from dotenv import load_dotenv
 
-load_dotenv()
-MY_EMAIL = os.getenv("MY_EMAIL")
-MY_PASSWORD = os.getenv("MY_PASSWORD")
+def get_env(name):
+    value = os.getenv(name)
+    if value is None:
+        raise ValueError(f"Environment variable {name} is not set")
+    return value
+
+MY_EMAIL = get_env("MY_EMAIL")
+MY_PASSWORD = get_env("MY_PASSWORD")
 
 birthdays = pd.read_csv("birthdays.csv")
 current_date = dt.datetime.today()
