@@ -1,35 +1,10 @@
-question_data = [
-    {"type": "boolean",
-     "difficulty": "medium",
-     "category": "Science: Computers",
-     "question": "MacOS is based on Linux.",
-     "correct_answer": "False",
-     "incorrect_answers": ["True"]
-     },
-    {"type": "boolean", "difficulty": "medium", "category": "Science: Computers",
-     "question": "The HTML5 standard was published in 2014.", "correct_answer": "True", "incorrect_answers": ["False"]},
-    {"type": "boolean", "difficulty": "easy", "category": "Science: Computers",
-     "question": "The NVidia GTX 1080 gets its name because it can only render at a 1920x1080 screen resolution.",
-     "correct_answer": "False", "incorrect_answers": ["True"]},
-    {"type": "boolean", "difficulty": "easy", "category": "Science: Computers",
-     "question": "Time on Computers is measured via the EPOX System.", "correct_answer": "False",
-     "incorrect_answers": ["True"]},
-    {"type": "boolean", "difficulty": "medium", "category": "Science: Computers",
-     "question": "The open source program Redis is a relational database server.",
-     "correct_answer": "False", "incorrect_answers": ["True"]},
-    {"type": "boolean", "difficulty": "medium", "category": "Science: Computers",
-     "question": "The first computer bug was formed by faulty wires.", "correct_answer": "False",
-     "incorrect_answers": ["True"]},
-    {"type": "boolean", "difficulty": "easy", "category": "Science: Computers",
-     "question": "Pointers were not used in the original C programming language; they were added later on in C++.",
-     "correct_answer": "False", "incorrect_answers": ["True"]},
-    {"type": "boolean", "difficulty": "easy", "category": "Science: Computers",
-     "question": "JavaScript derives from a later version of Java", "correct_answer": "False",
-     "incorrect_answers": ["True"]},
-    {"type": "boolean", "difficulty": "medium", "category": "Science: Computers",
-     "question": "Android versions are named in alphabetical order.",
-     "correct_answer": "True", "incorrect_answers": ["False"]},
-    {"type": "boolean", "difficulty": "hard", "category": "Science: Computers",
-     "question": "The IBM PC used an Intel 8008 microprocessor clocked at 4.77 MHz and 8 kilobytes of memory.",
-     "correct_answer": "False", "incorrect_answers": ["True"]}
-]
+import requests
+
+url = "https://opentdb.com/api.php"
+params = {
+    "amount": 10,
+    "category": 18,
+    "type": "boolean",
+}
+response = requests.get(url=url, params=params)
+question_data = response.json()["results"]
