@@ -9,6 +9,7 @@ class QuizInterface:
 
     def __init__(self, quiz_brain: QuizBrain):
         self.quiz = quiz_brain
+        self.question_timer = None
 
         self.window = Tk()
         self.window.title("Quizzler")
@@ -41,8 +42,19 @@ class QuizInterface:
         self.window.mainloop()
 
     def get_next_question(self):
-        q_text = self.quiz.next_question()
-        self.canvas.itemconfig(self.question_text, text=q_text)
+        self.canvas.config(bg="white")
+
+        self.true_button.config(state="normal")
+        self.false_button.config(state="normal")
+
+        if self.quiz.still_has_questions():
+            self.score_label.config(text=f"Score: {self.quiz.score}")
+            q_text = self.quiz.next_question()
+            self.canvas.itemconfig(self.question_text, text=q_text)
+        else:
+            self.canvas.itemconfig(self.question_text, text="You`ve reached the end of the quiz.")
+            self.true_button.config(state="disabled")
+            self.false_button.config(state="disabled")
 
     def false_pressed(self):
         self.give_feedback(self.quiz.check_answer(user_answer="False"))
@@ -53,4 +65,15 @@ class QuizInterface:
 
 
     def give_feedback(self, is_right):
-        self.window.after(1000, self.window.quit)
+        if self.question_timer:
+            self.window.after_cancel(self.question_timer)
+
+        self.true_button.config(state="disabled")
+        self.false_button.config(state="disabled")
+
+        if is_right:
+            self.canvas.config(bg="green")
+        else:
+            self.canvas.config(bg="red")
+        self.question_timer = self.window.after(1000, self.get_next_question)
+
