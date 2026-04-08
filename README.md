@@ -15,6 +15,8 @@
 
 These projects best represent my current level and skills.
 
+📌 [Quiz App (Tkinter + API)](#quiz-app)
+
 📌 [ISS Overhead Notifier](#iss-notifier)
 
 📌 [Flash Cards App](#flash-cards-app)
@@ -26,6 +28,27 @@ These projects best represent my current level and skills.
 ## 🧪 My Learning Projects
 
 Early projects created during my learning journey. They reflect my progress and understanding of core concepts. Each project focuses on a specific concept: from core Python logic to interactive applications and architecture design.
+
+---
+
+### <a id="quiz-app"></a>📌 Quiz App (Tkinter + API)
+
+A desktop quiz application that fetches real-time questions from an external API and provides an interactive user interface with immediate feedback and score tracking.
+
+This is the updated version of [Quiz Game](#quiz-game).
+
+- Fetched dynamic quiz data from the Open Trivia Database API using `requests`
+- Built a modular architecture separating data, logic, and UI (`QuizBrain`, `Question`, `QuizInterface`)
+- Implemented event-driven GUI using `tkinter`
+- Designed asynchronous UI behavior with `after()` for delayed transitions and feedback
+- Handled HTML entity decoding (`html.unescape`) for clean question rendering
+- Implemented user interaction flow with answer validation and visual feedback (color states)
+- Prevented multi-click race conditions by controlling UI state (button disabling)
+- Managed application state (score, current question, progress)
+
+![quiz_app_01](readme_data/quiz_app_01.gif)
+
+[Open](quizzler_app/)
 
 ---
 
@@ -244,7 +267,7 @@ Generates dot paintings in the Damien Hirst style. Focused on working with graph
 
 ---
 
-### 📌 Quiz Game
+### <a id="quiz-game"></a>📌 Quiz Game
 
 Console-based quiz game where you answer either True or False. The list of questions is fixed and sourced from an Trivia DB API.
 
