@@ -29,14 +29,10 @@ def calc_price_diff():
     response.raise_for_status()
     data = response.json()["Time Series (Daily)"]
 
-    yesterday = date.today() - timedelta(days=1)
-    yesterday_str = yesterday.strftime("%Y-%m-%d")
+    data_list = [value for key, value in data.items()]
 
-    day_before_yesterday = date.today() - timedelta(days=2)
-    day_before_yesterday_str = day_before_yesterday.strftime("%Y-%m-%d")
-
-    yesterday_close = float(data[yesterday_str]["4. close"])
-    day_before_yesterday_close = float(data[day_before_yesterday_str]["4. close"])
+    yesterday_close = float(data_list[0]["4. close"])
+    day_before_yesterday_close = float(data_list[1]["4. close"])
 
     percent_price_diff = round((yesterday_close - day_before_yesterday_close) / day_before_yesterday_close * 100, 2)
     print(percent_price_diff)
@@ -65,6 +61,7 @@ def send_notification(percent_price_diff, news_data):
 
     print(message)
 
+calc_price_diff()
 
 price_diff = calc_price_diff()
 if abs(price_diff) > 0:
