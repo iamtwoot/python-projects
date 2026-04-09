@@ -39,8 +39,8 @@ def calc_price_diff():
 def get_news(percent_price_diff):
     response = requests.get(news_url, params=news_params)
     response.raise_for_status()
-    data = response.json()["articles"]
-    send_notification(percent_price_diff, data)
+    news_data = response.json()["articles"]
+    send_notification(percent_price_diff, news_data)
 
 
 def send_notification(percent_price_diff, news_data):
