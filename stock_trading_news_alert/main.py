@@ -1,10 +1,11 @@
 import requests
+import os
 
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
 # Alpha (stocks) data
-ALPHA_API_KEY = "AM4CYEHS3I1KGJ8H"
+ALPHA_API_KEY = os.getenv("ALPHA_API_KEY")
 alpha_url = "https://www.alphavantage.co/query?"
 alpha_params = {
     "function": "TIME_SERIES_DAILY",
@@ -13,7 +14,7 @@ alpha_params = {
 }
 
 # News data
-NEWS_API_KEY = "56cd6bf338af4effbfa2cf3bd7d2afa7"
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 news_url = "https://newsapi.org/v2/everything?"
 news_params = {
     "apiKey": NEWS_API_KEY,
