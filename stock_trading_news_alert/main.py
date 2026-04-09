@@ -1,5 +1,4 @@
 import requests
-from datetime import date, timedelta
 
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
@@ -28,7 +27,6 @@ def calc_price_diff():
     response = requests.get(alpha_url, params=alpha_params)
     response.raise_for_status()
     data = response.json()["Time Series (Daily)"]
-
     data_list = [value for key, value in data.items()]
 
     yesterday_close = float(data_list[0]["4. close"])
