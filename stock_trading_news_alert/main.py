@@ -42,31 +42,32 @@ def calc_price_diff():
     print(percent_price_diff)
     return percent_price_diff
 
-def get_news():
+def get_news(percent_price_diff):
     response = requests.get(news_url, params=news_params)
     response.raise_for_status()
     data = response.json()["articles"]
-    for news in data:
-        print(news["title"])
+    send_notification(percent_price_diff, data)
 
 
-if abs(calc_price_diff()) > 0:
-    get_news()
+def send_notification(percent_price_diff, news_data):
+    symbol_up = "🔺"
+    symbol_down = "🔻"
+    message = ""
+    if percent_price_diff < 0:
+        message_title = f'"""\n{STOCK}: {symbol_down}{percent_price_diff}%\n'
+    else:
+        message_title = f'"""\n{STOCK}: {symbol_up}{percent_price_diff}%\n'
+
+    message += message_title
+
+    for news in news_data:
+        message += f'Headline: {news["title"]}\nBrief: {news["description"]}\n--------------------------\n'
+
+    print(message)
 
 
+price_diff = calc_price_diff()
+if abs(price_diff) > 0:
+    get_news(price_diff)
 
-## STEP 3: Use https://www.twilio.com
-# Send a seperate message with the percentage change and each article's title and description to your phone number. 
-
-
-#Optional: Format the SMS message like this: 
-"""
-TSLA: 🔺2%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-or
-"TSLA: 🔻5%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-"""
 
