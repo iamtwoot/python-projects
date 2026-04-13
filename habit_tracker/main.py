@@ -36,14 +36,23 @@ headers = {
 # response = requests.post(url=graph_endpoint, json=graph_config, headers=headers)
 
 # ADD A PIXEL
-pixel_creation_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/graph1"
-
+# pixel_creation_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/graph1"
+#
 today = datetime.today()
+#
+# pixel_data = {
+#     "date": today.strftime("%Y%m%d"),
+#     "quantity": "60",
+# }
+# response = requests.post(pixel_creation_endpoint, json=pixel_data, headers=headers)
+# print(response.text)
 
-pixel_data = {
-    "date": today.strftime("%Y%m%d"),
-    "quantity": "60",
-}
-response = requests.post(pixel_creation_endpoint, json=pixel_data, headers=headers)
-print(response.text)
+# UPDATE PIXEL
+# date = today.strftime("%Y%m%d")
+# pixel_update_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/graph1/{date}"
+# new_pixel_data = {
+#     "quantity": "30",
+# }
+# response = requests.put(pixel_update_endpoint, headers=headers, json=new_pixel_data)
+# print(response.text)
 
