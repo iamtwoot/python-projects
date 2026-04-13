@@ -41,7 +41,7 @@ exercise = response.json()["exercises"][0]
 sheety_post_endpoint = "https://api.sheety.co/a88fb946c8c271239ada21877e03dd4b/workoutTracker20/workouts"
 
 day = datetime.now().strftime("%d/%m/%Y")
-time = datetime.now().strftime("%H:%M:%S")
+time = datetime.now().strftime("%X")
 headers = {
     "Authorization": f"Bearer {SHEETY_TOKEN}",
 }
