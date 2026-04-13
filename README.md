@@ -11,23 +11,26 @@
 - Databases (PostgreSQL, SQL)
 - Flask (basic backend development)
 
-## ⭐ Featured
-
-These projects best represent my current level and skills.
-
-📌 [Quiz App (Tkinter + API)](#quiz-app)
-
-📌 [ISS Overhead Notifier](#iss-notifier)
-
-📌 [Flash Cards App](#flash-cards-app)
-
-📌 [Password Manager](#password-manager)
-
-📌 [Pomodoro Timer](#pomodoro-timer)
-
 ## 🧪 My Learning Projects
 
-Early projects created during my learning journey. They reflect my progress and understanding of core concepts. Each project focuses on a specific concept: from core Python logic to interactive applications and architecture design.
+Early projects created during my learning journey. They reflect my progress and understanding of core concepts. Each project focuses on a specific concept: from core Python logic to interactive applications and architecture design. 
+
+**Sorted by recency.**
+
+---
+
+### <a id="workout-tracker"></a>📌 Exercise Tracker with API Integration
+
+A Python application that tracks physical activity by processing natural language input and logging structured workout data via external APIs.
+
+- Integrated with educational API to process natural language exercise input
+- Extracted structured data (duration, calories, exercise type) from API response
+- Logged workout data into Google Sheets via Sheety API
+- Handled authentication using environment variables
+- Formatted and stored date/time using `datetime`
+- Combined multiple APIs into a single data pipeline
+
+[Open](workout_tracking/)
 
 ---
 
