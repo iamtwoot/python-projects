@@ -23,4 +23,4 @@ class DataManager:
     def get_data(self):
         response = requests.get(url=self.sheety_url, headers=self.headers)
         self.data = response.json()
-        print(self.data)
+        return self.data
