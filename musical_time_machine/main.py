@@ -12,7 +12,7 @@ CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 
 date = input("What year do you want to travel to? Type the date in this format YYYY-MM-DD: ")
 
-url = f"https://appbrewery.github.io/bakeboard-hot-100/{date}"
+url = f"https://appbrewery.github.io/bakeboard-hot-100/{date}/"
 
 response = requests.get(url)
 response.raise_for_status()
@@ -31,7 +31,8 @@ user_id = sp.current_user()["id"]
 song_uris = []
 year = date.split("-")[0]
 for song in song_names:
-    result = sp.search(q=f"track: {song} year:{year}")
+    song = song.strip()
+    result = sp.search(q=f"track: {song} year:{year}", type="track", limit=1)
     try:
         uri = result["tracks"]["items"][0]["uri"]
         song_uris.append(uri)
