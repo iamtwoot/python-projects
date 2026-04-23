@@ -19,6 +19,22 @@ Early projects created during my learning journey. They reflect my progress and 
 
 ---
 
+### 📌 Billboard to Spotify Playlist
+
+A Python automation script that creates Spotify playlists based on Billboard Hot 100 songs from a selected date using web scraping and Spotify API integration.
+
+- Scraped Billboard Hot 100 data using `BeautifulSoup`
+- Extracted song titles from HTML structure
+- Integrated Spotify Web API using `Spotipy`
+- Authenticated user via OAuth flow
+- Searched tracks dynamically using Spotify API
+- Created private playlists programmatically
+- Handled missing tracks gracefully using exception handling
+
+[Open](musical_time_machine/)
+
+---
+
 ### <a id="workout-tracker"></a>📌 Exercise Tracker with API Integration
 
 A Python application that tracks physical activity by processing natural language input and logging structured workout data via external APIs.
