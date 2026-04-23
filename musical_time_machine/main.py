@@ -24,7 +24,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
     client_id=CLIENT_ID,
     client_secret=CLIENT_SECRET,
     redirect_uri="https://example.com",
-    scope="playlist-modify-private playlist-modify-public user-library-read",
+    scope="playlist-modify-private user-library-read",
 ))
 user_id = sp.current_user()["id"]
 
