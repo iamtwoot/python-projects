@@ -24,7 +24,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
     client_id=CLIENT_ID,
     client_secret=CLIENT_SECRET,
     redirect_uri="https://example.com",
-    scope="playlist-modify-private user-library-read",
+    scope="playlist-modify-private playlist-modify-public",
 ))
 user_id = sp.current_user()["id"]
 
@@ -32,7 +32,7 @@ song_uris = []
 year = date.split("-")[0]
 for song in song_names:
     song = song.strip()
-    result = sp.search(q=f"track: {song} year:{year}", type="track", limit=1)
+    result = sp.search(q=f"track: {song}", type="track", limit=1)
     try:
         uri = result["tracks"]["items"][0]["uri"]
         song_uris.append(uri)
