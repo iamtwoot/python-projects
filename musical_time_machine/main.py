@@ -2,6 +2,8 @@ import os
 import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
 
 load_dotenv()
 
@@ -17,3 +19,11 @@ response.raise_for_status()
 
 soup = BeautifulSoup(response.text, "html.parser")
 song_names = [tag.getText() for tag in soup.select("h3.chart-entry__title")]
+
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
+    client_id=CLIENT_ID,
+    client_secret=CLIENT_SECRET,
+    redirect_uri="https://example.com",
+    scope="playlist-modify-private playlist-modify-public user-library-read",
+))
+user_id = sp.current_user()["id"]
