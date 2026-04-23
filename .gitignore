@@ -17,4 +17,7 @@ venv.bak/
 # Practice projects
 pracc/
 
+# Cache
+.cache
+
 
