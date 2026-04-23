@@ -39,3 +39,11 @@ for song in song_names:
     except IndexError:
         print(f"{song} doesn`t exist in Spotify. Skipped.")
 
+new_playlist = sp.current_user_playlist_create(
+    name=f"{date} Billboard 100",
+    public=False,
+    description=f"Created using Python",
+)
+new_playlist_id = new_playlist["id"]
+
+sp.playlist_add_items(new_playlist_id, song_uris)
