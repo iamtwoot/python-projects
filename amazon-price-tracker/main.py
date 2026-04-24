@@ -12,7 +12,9 @@ EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
 url = "https://appbrewery.github.io/instant_pot/"
 
-html = requests.get(url).text
+html = requests.get(url, headers={"Accept-Language":"en-US,en;q=0.5",
+                                  "User-Agent":"CCBot/2.0 (https://commoncrawl.org/faq/)"
+                                  }).text
 soup = BeautifulSoup(html, "html.parser")
 
 price_tag = soup.select_one(".a-offscreen")
@@ -29,5 +31,5 @@ if price < 100:
         connection.sendmail(
             from_addr=EMAIL_ADDRESS,
             to_addrs=EMAIL_ADDRESS,
-            msg=f"Subject:Amazon Price Alert!\n\n{title} is now {price}\n{url}"
+            msg=f"Subject:Amazon Price Alert!\n\n{title} is now {price}\n{url}".encode("utf-8"),
         )
