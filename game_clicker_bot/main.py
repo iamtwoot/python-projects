@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 URL = "https://ozh.github.io/cookieclicker/"
 CHECK_INTERVAL = 5
+GAME_LONG = 300
 
 def check_for_upgrades():
     available_upgrades = driver.find_elements(By.CSS_SELECTOR, "#products .enabled")
@@ -30,10 +31,21 @@ time.sleep(5)
 
 cookie = driver.find_element(By.XPATH, '//*[@id="bigCookie"]')
 
-next_check = time.time() + CHECK_INTERVAL
-while True:
+start_time = time.time()
+next_check = start_time + CHECK_INTERVAL
+stop_time = time.time() + GAME_LONG
+
+game_is_on = True
+
+while game_is_on:
     cookie.click()
 
     if time.time() >= next_check:
         check_for_upgrades()
         next_check += CHECK_INTERVAL
+
+    if time.time() >= stop_time:
+        game_is_on = False
+
+cookies_per_second = driver.find_element(By.XPATH, '//*[@id="cookiesPerSecond"]')
+print(f"cookies/second: {cookies_per_second.text}")
