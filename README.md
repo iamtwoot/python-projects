@@ -19,6 +19,20 @@ Early projects created during my learning journey. They reflect my progress and 
 
 ---
 
+### 📌Cookie Clicker Automation Bot (Selenium)
+
+A Python automation bot that plays Cookie Clicker using Selenium, simulating user clicks, managing upgrades, and optimizing in-game progress over time.
+
+- Automated browser interaction using `Selenium WebDriver`
+- Implemented continuous clicking loop for resource generation
+- Built timed upgrade system using interval-based logic
+- Managed dynamic UI elements via CSS selectors and XPath
+- Extracted real-time game statistics (cookies per second)
+
+[Open](game_clicker_bot/)
+
+---
+
 ### 📌 Billboard to Spotify Playlist
 
 A Python automation script that creates Spotify playlists based on Billboard Hot 100 songs from a selected date using web scraping and Spotify API integration.
