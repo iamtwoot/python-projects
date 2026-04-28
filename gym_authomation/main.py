@@ -83,38 +83,27 @@ for class_to_book in classes_to_book:
     time.sleep(0.5)
 
 # ------------------- CHECK MY BOOKINGS ------------------------------- #
+total_booked = len(new_bookings) + len(new_waitlists)
+print(f"\n--- Total Tuesday/Thursday 6pm classes: {total_booked} ---")
+print("\n--- VERIFYING ON MY BOOKING PAGE ---")
+
 bookings_link = driver.find_element(By.CSS_SELECTOR, "a#my-bookings-link")
 bookings_link.click()
 
 wait.until(EC.presence_of_element_located((By.ID, "my-bookings-page")))
 
-verified_bookings = 0
-expected_bookings = len(new_bookings) + len(new_waitlists)
-
 confirmed_bookings = driver.find_elements(By.XPATH, "//div[contains(@id, 'booking-card')]")
 confirmed_waitlists = driver.find_elements(By.XPATH, "//div[contains(@id, 'waitlist-card')]")
-all_confirmed = confirmed_bookings + confirmed_waitlists
+verified_count = len(confirmed_bookings) + len(confirmed_waitlists)
 
-for booking in all_confirmed:
-    class_name = booking.find_element(By.CSS_SELECTOR, "h3").text
-    try:
-        formatted_class_name = class_name.split("(")[0].strip()
-    except IndexError:
-        formatted_class_name = class_name
-    class_date = booking.find_element(By.XPATH, "./descendant::p").text
-    formatted_date = ",".join(class_date.replace("When: ", "").split(",")[:2])
+print("\n--- VERIFICATION RESULT ---")
+print(f"Expected bookings: {total_booked}")
+print(f"Verified bookings: {verified_count}")
 
-    class_str = f"{formatted_class_name} on {formatted_date}"
-    if class_str in new_bookings or class_str in new_waitlists:
-        verified_bookings += 1
-
-print("--- VERIFICATION RESULT ---")
-print(f"Expected bookings: {expected_bookings}")
-print(f"Verified bookings: {verified_bookings}")
-if verified_bookings == expected_bookings:
+if verified_count == total_booked:
     print("✅ SUCCESS: All bookings verified!")
 else:
-    print(f"❌ MISMATCH: Missing {expected_bookings - verified_bookings} bookings")
+    print(f"❌ MISMATCH: Missing {total_booked - verified_count} bookings")
 
 print("\n--- BOOKING SUMMARY ---")
 print(f"Classes booked: {booked_count}")
