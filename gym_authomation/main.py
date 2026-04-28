@@ -1,4 +1,5 @@
 import os
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -56,36 +57,70 @@ classes_to_book.append(next_thu_classes.find_element(By.CSS_SELECTOR, "div[id*='
 for class_to_book in classes_to_book:
     class_name = class_to_book.find_element(By.CSS_SELECTOR, "h3").text
     class_date = class_to_book.find_element(By.XPATH, "./ancestor::div[contains(@id, 'day-group')]//h2").text
+    try:
+        formatted_class_date = class_date.split("(")[1].split(")")[0]
+    except IndexError:
+        formatted_class_date = class_date
     book_btn = class_to_book.find_element(By.CSS_SELECTOR, "button[id^='book-']")
 
     if book_btn.text == "Booked":
         already_booked_count += 1
-        print(f"✓ Already booked: {class_name} on {class_date}")
+        print(f"✓ Already booked: {class_name} on {formatted_class_date}")
     elif book_btn.text == "Waitlisted":
         already_booked_count += 1
-        print(f"✓ Already on waitlist: {class_name} on {class_date}")
+        print(f"✓ Already on waitlist: {class_name} on {formatted_class_date}")
     elif book_btn.text == "Join Waitlist":
         waitlist_count += 1
         book_btn.click()
-        print(f"✓ Joined waitlist for: {class_name} on {class_date}")
-        new_waitlists.append(f"{class_name} on {class_date}")
+        print(f"✓ Joined waitlist for: {class_name} on {formatted_class_date}")
+        new_waitlists.append(f"{class_name} on {formatted_class_date}")
     else:
         booked_count += 1
         book_btn.click()
-        print(f"✓ Booked: {class_name} on {class_date}")
-        new_bookings.append(f"{class_name} on {class_date}")
+        print(f"✓ Booked: {class_name} on {formatted_class_date}")
+        new_bookings.append(f"{class_name} on {formatted_class_date}")
 
-print("\n--- BOOKING SUMMARY ---")
-print(f"Classes booked: {booked_count}")
-print(f"Waitlists joined {waitlist_count}")
-print(f"Already booked/waitlisted: {already_booked_count}")
-print(f"Total Tuesday 6pm classes processed: {booked_count + waitlist_count + already_booked_count}")
+    time.sleep(0.5)
 
-print(f"\n--- DETAILED CLASS LIST ---")
-if new_bookings or new_waitlists:
-    for new_booking in new_bookings:
-        print(f"• [New Booking] {new_booking}")
-    for new_waitlist in new_waitlists:
-        print(f"• [New Waitlist] {new_waitlist}")
-else:
-    print("No [new bookings] or [new waitlists]")
+print(new_waitlists)
+print(new_bookings)
+
+# ------------------- CHECK MY BOOKINGS ------------------------------- #
+bookings_link = driver.find_element(By.CSS_SELECTOR, "a#my-bookings-link")
+bookings_link.click()
+
+wait.until(EC.presence_of_element_located((By.ID, "my-bookings-page")))
+
+verified_bookings = 0
+expected_bookings = len(new_bookings) + len(new_waitlists)
+
+# bookings
+confirmed_bookings = driver.find_elements(By.XPATH, "//div[contains(@id, 'booking-card')]")
+
+for booking in confirmed_bookings:
+    class_name = booking.find_element(By.CSS_SELECTOR, "h3").text
+    class_date = booking.find_element(By.XPATH, "./descendant::p").text
+    formatted_date = ",".join(class_date.replace("When: ", "").split(",")[:2])
+
+    class_str = f"{class_name} on {formatted_date}"
+    if class_str in new_bookings:
+        verified_bookings += 1
+
+
+print(f"Expected bookings: {expected_bookings}")
+print(f"Verified bookings: {verified_bookings}")
+
+# print("\n--- BOOKING SUMMARY ---")
+# print(f"Classes booked: {booked_count}")
+# print(f"Waitlists joined {waitlist_count}")
+# print(f"Already booked/waitlisted: {already_booked_count}")
+# print(f"Total Tuesday 6pm classes processed: {booked_count + waitlist_count + already_booked_count}")
+#
+# print(f"\n--- DETAILED CLASS LIST ---")
+# if new_bookings or new_waitlists:
+#     for new_booking in new_bookings:
+#         print(f"• [New Booking] {new_booking}")
+#     for new_waitlist in new_waitlists:
+#         print(f"• [New Waitlist] {new_waitlist}")
+# else:
+#     print("No [new bookings] or [new waitlists]")
