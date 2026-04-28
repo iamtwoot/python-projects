@@ -44,6 +44,14 @@ class_to_book = next_tue_classes.find_element(By.CSS_SELECTOR, "div[id*='1800']"
 class_name = class_to_book.find_element(By.CSS_SELECTOR, "h3").text
 
 book_btn = class_to_book.find_element(By.CSS_SELECTOR, "button[id^='book-']")
-book_btn.click()
 
-print(f"✓ Booked: {class_name} on {date}")
+if book_btn.text == "Booked":
+    print(f"✓ Already booked: {class_name} on {date}")
+elif book_btn.text == "Waitlisted":
+    print(f"✓ Already on waitlist: {class_name} on {date}")
+elif book_btn.text == "Join Waitlist":
+    book_btn.click()
+    print(f"✓ Joined waitlist for: {class_name} on {date}")
+else:
+    book_btn.click()
+    print(f"✓ Booked: {class_name} on {date}")
