@@ -45,13 +45,27 @@ class_name = class_to_book.find_element(By.CSS_SELECTOR, "h3").text
 
 book_btn = class_to_book.find_element(By.CSS_SELECTOR, "button[id^='book-']")
 
+booked_count = 0
+waitlist_count = 0
+already_booked_count = 0
+
 if book_btn.text == "Booked":
+    already_booked_count += 1
     print(f"✓ Already booked: {class_name} on {date}")
 elif book_btn.text == "Waitlisted":
+    already_booked_count += 1
     print(f"✓ Already on waitlist: {class_name} on {date}")
 elif book_btn.text == "Join Waitlist":
+    waitlist_count += 1
     book_btn.click()
     print(f"✓ Joined waitlist for: {class_name} on {date}")
 else:
+    booked_count += 1
     book_btn.click()
     print(f"✓ Booked: {class_name} on {date}")
+
+print("\n--- BOOKING SUMMARY ---")
+print(f"Classes booked: {booked_count}")
+print(f"Waitlists joined {waitlist_count}")
+print(f"Already booked/waitlisted: {already_booked_count}")
+print(f"Total Tuesday 6pm classes processed: {booked_count + waitlist_count + already_booked_count}")
