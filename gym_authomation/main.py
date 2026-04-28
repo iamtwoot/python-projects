@@ -82,9 +82,6 @@ for class_to_book in classes_to_book:
 
     time.sleep(0.5)
 
-print(new_waitlists)
-print(new_bookings)
-
 # ------------------- CHECK MY BOOKINGS ------------------------------- #
 bookings_link = driver.find_element(By.CSS_SELECTOR, "a#my-bookings-link")
 bookings_link.click()
@@ -119,17 +116,17 @@ if verified_bookings == expected_bookings:
 else:
     print(f"❌ MISMATCH: Missing {expected_bookings - verified_bookings} bookings")
 
-# print("\n--- BOOKING SUMMARY ---")
-# print(f"Classes booked: {booked_count}")
-# print(f"Waitlists joined {waitlist_count}")
-# print(f"Already booked/waitlisted: {already_booked_count}")
-# print(f"Total Tuesday 6pm classes processed: {booked_count + waitlist_count + already_booked_count}")
-#
-# print(f"\n--- DETAILED CLASS LIST ---")
-# if new_bookings or new_waitlists:
-#     for new_booking in new_bookings:
-#         print(f"• [New Booking] {new_booking}")
-#     for new_waitlist in new_waitlists:
-#         print(f"• [New Waitlist] {new_waitlist}")
-# else:
-#     print("No [new bookings] or [new waitlists]")
+print("\n--- BOOKING SUMMARY ---")
+print(f"Classes booked: {booked_count}")
+print(f"Waitlists joined {waitlist_count}")
+print(f"Already booked/waitlisted: {already_booked_count}")
+print(f"Total Tuesday 6pm classes processed: {booked_count + waitlist_count + already_booked_count}")
+
+print(f"\n--- DETAILED CLASS LIST ---")
+if new_bookings or new_waitlists:
+    for new_booking in new_bookings:
+        print(f"• [New Booking] {new_booking}")
+    for new_waitlist in new_waitlists:
+        print(f"• [New Waitlist] {new_waitlist}")
+else:
+    print("No [new bookings] or [new waitlists]")
