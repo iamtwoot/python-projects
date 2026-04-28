@@ -94,21 +94,30 @@ wait.until(EC.presence_of_element_located((By.ID, "my-bookings-page")))
 verified_bookings = 0
 expected_bookings = len(new_bookings) + len(new_waitlists)
 
-# bookings
 confirmed_bookings = driver.find_elements(By.XPATH, "//div[contains(@id, 'booking-card')]")
+confirmed_waitlists = driver.find_elements(By.XPATH, "//div[contains(@id, 'waitlist-card')]")
+all_confirmed = confirmed_bookings + confirmed_waitlists
 
-for booking in confirmed_bookings:
+for booking in all_confirmed:
     class_name = booking.find_element(By.CSS_SELECTOR, "h3").text
+    try:
+        formatted_class_name = class_name.split("(")[0].strip()
+    except IndexError:
+        formatted_class_name = class_name
     class_date = booking.find_element(By.XPATH, "./descendant::p").text
     formatted_date = ",".join(class_date.replace("When: ", "").split(",")[:2])
 
-    class_str = f"{class_name} on {formatted_date}"
-    if class_str in new_bookings:
+    class_str = f"{formatted_class_name} on {formatted_date}"
+    if class_str in new_bookings or class_str in new_waitlists:
         verified_bookings += 1
 
-
+print("--- VERIFICATION RESULT ---")
 print(f"Expected bookings: {expected_bookings}")
 print(f"Verified bookings: {verified_bookings}")
+if verified_bookings == expected_bookings:
+    print("✅ SUCCESS: All bookings verified!")
+else:
+    print(f"❌ MISMATCH: Missing {expected_bookings - verified_bookings} bookings")
 
 # print("\n--- BOOKING SUMMARY ---")
 # print(f"Classes booked: {booked_count}")
