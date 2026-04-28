@@ -36,3 +36,14 @@ login_button = driver.find_element(By.CSS_SELECTOR, "#submit-button")
 login_button.click()
 
 wait.until(EC.presence_of_element_located((By.ID, "schedule-page")))
+
+next_tue_classes = driver.find_element(By.CSS_SELECTOR, "div[id*='tue']")
+date = next_tue_classes.find_element(By.CSS_SELECTOR, "h2").text
+
+class_to_book = next_tue_classes.find_element(By.CSS_SELECTOR, "div[id*='1800']")
+class_name = class_to_book.find_element(By.CSS_SELECTOR, "h3").text
+
+book_btn = class_to_book.find_element(By.CSS_SELECTOR, "button[id^='book-']")
+book_btn.click()
+
+print(f"✓ Booked: {class_name} on {date}")
