@@ -37,35 +37,55 @@ login_button.click()
 
 wait.until(EC.presence_of_element_located((By.ID, "schedule-page")))
 
-next_tue_classes = driver.find_element(By.CSS_SELECTOR, "div[id*='tue']")
-date = next_tue_classes.find_element(By.CSS_SELECTOR, "h2").text
-
-class_to_book = next_tue_classes.find_element(By.CSS_SELECTOR, "div[id*='1800']")
-class_name = class_to_book.find_element(By.CSS_SELECTOR, "h3").text
-
-book_btn = class_to_book.find_element(By.CSS_SELECTOR, "button[id^='book-']")
-
+# ---------------------------- FIND AND BOOK CLASSES ---------------------------------- #
 booked_count = 0
 waitlist_count = 0
 already_booked_count = 0
 
-if book_btn.text == "Booked":
-    already_booked_count += 1
-    print(f"✓ Already booked: {class_name} on {date}")
-elif book_btn.text == "Waitlisted":
-    already_booked_count += 1
-    print(f"✓ Already on waitlist: {class_name} on {date}")
-elif book_btn.text == "Join Waitlist":
-    waitlist_count += 1
-    book_btn.click()
-    print(f"✓ Joined waitlist for: {class_name} on {date}")
-else:
-    booked_count += 1
-    book_btn.click()
-    print(f"✓ Booked: {class_name} on {date}")
+new_bookings = []
+new_waitlists = []
+
+# ALL TUESDAY CLASSES
+next_tue_classes = driver.find_element(By.CSS_SELECTOR, "div[id*='tue']")
+classes_to_book = next_tue_classes.find_elements(By.CSS_SELECTOR, "div[id^='class-card']")
+
+# 6 PM THURSDAY CLASSES
+next_thu_classes = driver.find_element(By.CSS_SELECTOR, "div[id*='thu']")
+classes_to_book.append(next_thu_classes.find_element(By.CSS_SELECTOR, "div[id*='1800']"))
+
+for class_to_book in classes_to_book:
+    class_name = class_to_book.find_element(By.CSS_SELECTOR, "h3").text
+    class_date = class_to_book.find_element(By.XPATH, "./ancestor::div[contains(@id, 'day-group')]//h2").text
+    book_btn = class_to_book.find_element(By.CSS_SELECTOR, "button[id^='book-']")
+
+    if book_btn.text == "Booked":
+        already_booked_count += 1
+        print(f"✓ Already booked: {class_name} on {class_date}")
+    elif book_btn.text == "Waitlisted":
+        already_booked_count += 1
+        print(f"✓ Already on waitlist: {class_name} on {class_date}")
+    elif book_btn.text == "Join Waitlist":
+        waitlist_count += 1
+        book_btn.click()
+        print(f"✓ Joined waitlist for: {class_name} on {class_date}")
+        new_waitlists.append(f"{class_name} on {class_date}")
+    else:
+        booked_count += 1
+        book_btn.click()
+        print(f"✓ Booked: {class_name} on {class_date}")
+        new_bookings.append(f"{class_name} on {class_date}")
 
 print("\n--- BOOKING SUMMARY ---")
 print(f"Classes booked: {booked_count}")
 print(f"Waitlists joined {waitlist_count}")
 print(f"Already booked/waitlisted: {already_booked_count}")
 print(f"Total Tuesday 6pm classes processed: {booked_count + waitlist_count + already_booked_count}")
+
+print(f"\n--- DETAILED CLASS LIST ---")
+if new_bookings or new_waitlists:
+    for new_booking in new_bookings:
+        print(f"• [New Booking] {new_booking}")
+    for new_waitlist in new_waitlists:
+        print(f"• [New Waitlist] {new_waitlist}")
+else:
+    print("No [new bookings] or [new waitlists]")
