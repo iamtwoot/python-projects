@@ -107,7 +107,7 @@ else:
 
 print("\n--- BOOKING SUMMARY ---")
 print(f"Classes booked: {booked_count}")
-print(f"Waitlists joined {waitlist_count}")
+print(f"Waitlists joined: {waitlist_count}")
 print(f"Already booked/waitlisted: {already_booked_count}")
 print(f"Total Tuesday 6pm classes processed: {booked_count + waitlist_count + already_booked_count}")
 
