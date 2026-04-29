@@ -41,6 +41,14 @@ def login():
 
     wait.until(EC.presence_of_element_located((By.ID, "schedule-page")))
 
+def book_class(button_id):
+    button = wait.until(EC.element_to_be_clickable((By.ID, button_id)))
+    # driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button)
+    button.click()
+
+    wait.until(lambda d: button.text == "Booked" or
+                         button.text == "Waitlisted")
+
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option("detach", True)
 
@@ -49,10 +57,12 @@ chrome_options.add_argument(f"--user-data-dir={user_data_dir}")
 driver = webdriver.Chrome(options=chrome_options)
 driver.get(GYM_URL)
 
-wait = WebDriverWait(driver, 2)
+wait = WebDriverWait(driver, 5)
 
 retry(login, description="login")
+
 # ---------------------------- FIND AND BOOK CLASSES ---------------------------------- #
+
 booked_count = 0
 waitlist_count = 0
 already_booked_count = 0
@@ -69,34 +79,41 @@ next_thu_classes = driver.find_element(By.CSS_SELECTOR, "div[id*='thu']")
 classes_to_book.append(next_thu_classes.find_element(By.CSS_SELECTOR, "div[id*='1800']"))
 
 for class_to_book in classes_to_book:
+
     class_name = class_to_book.find_element(By.CSS_SELECTOR, "h3").text
     class_date = class_to_book.find_element(By.XPATH, "./ancestor::div[contains(@id, 'day-group')]//h2").text
+
     try:
         formatted_class_date = class_date.split("(")[1].split(")")[0]
     except IndexError:
         formatted_class_date = class_date
+
     book_btn = class_to_book.find_element(By.CSS_SELECTOR, "button[id^='book-']")
 
     if book_btn.text == "Booked":
         already_booked_count += 1
         print(f"✓ Already booked: {class_name} on {formatted_class_date}")
+
     elif book_btn.text == "Waitlisted":
         already_booked_count += 1
         print(f"✓ Already on waitlist: {class_name} on {formatted_class_date}")
+
     elif book_btn.text == "Join Waitlist":
+        retry(lambda: book_class(book_btn.get_attribute("id")), description="Waitlisting")
         waitlist_count += 1
-        book_btn.click()
         print(f"✓ Joined waitlist for: {class_name} on {formatted_class_date}")
         new_waitlists.append(f"{class_name} on {formatted_class_date}")
+
     else:
+        retry(lambda: book_class(book_btn.get_attribute("id")), description="Booking")
         booked_count += 1
-        book_btn.click()
         print(f"✓ Booked: {class_name} on {formatted_class_date}")
         new_bookings.append(f"{class_name} on {formatted_class_date}")
 
     time.sleep(0.5)
 
 # ------------------- CHECK MY BOOKINGS ------------------------------- #
+
 total_booked = len(new_bookings) + len(new_waitlists)
 print(f"\n--- Total Tuesday/Thursday 6pm classes: {total_booked} ---")
 print("\n--- VERIFYING ON MY BOOKING PAGE ---")
