@@ -11,7 +11,10 @@ class DataScraper:
 
     def __init__(self):
         self.data = {}
-        html = requests.get('https://appbrewery.github.io/Zillow-Clone/')
+        headers = {"User-Agent": "CCBot/2.0 (https://commoncrawl.org/faq/)",
+                   "Accept-Language": "en-US,en;q=0.5",
+                   }
+        html = requests.get('https://appbrewery.github.io/Zillow-Clone/', headers=headers)
         self.soup = BeautifulSoup(html.text, 'html.parser')
 
     def get_listings(self):
