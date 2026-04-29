@@ -20,9 +20,7 @@ class DataScraper:
     def get_data(self):
         listings = self.get_listings()
 
-        for listing in listings:
-
-            listing_id = listings.index(listing) + 1
+        for i, listing in enumerate(listings, start=1):
 
             link_el = listing.select_one("a")
             link = link_el.get("href") if link_el else None
@@ -34,7 +32,7 @@ class DataScraper:
             address_el = listing.select_one("address")
             address = address_el.get_text(strip=True) if address_el else None
 
-            self.data[listing_id] = {
+            self.data[i] = {
                 "link": link,
                 "price": formatted_price,
                 "address": address,
