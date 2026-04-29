@@ -19,6 +19,20 @@ Early projects created during my learning journey. They reflect my progress and 
 
 ---
 
+### 📌 Real Estate Data Scraper & Form Automation Pipeline (Selenium + BeautifulSoup)
+
+A Python automation pipeline that scrapes real estate listings from a website and automatically submits the collected data into a Google Form using browser automation.
+
+- Scrapes real estate listings (price, address, link) from a structured HTML page using `BeautifulSoup`
+- Cleans and normalizes extracted price data to ensure consistent formatting
+- Transforms scraped data into a structured dictionary format for downstream processing
+- Automates browser interaction with `Selenium WebDriver` to populate and submit a Google Form
+- Iterates through multiple listings and submits them as separate form entries
+
+[Open](capstone_automation/)
+
+---
+
 ### 📌 Gym Class Booking Automation (Selenium)
 
 A Python automation script that logs into a gym scheduling platform and automatically books selected classes with retry logic, state handling, and post-action verification.
