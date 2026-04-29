@@ -19,6 +19,25 @@ Early projects created during my learning journey. They reflect my progress and 
 
 ---
 
+### 📌 Gym Class Booking Automation (Selenium)
+
+A Python automation script that logs into a gym scheduling platform and automatically books selected classes with retry logic, state handling, and post-action verification.
+
+- Automated authentication flow using `Selenium WebDriver` with explicit waits for dynamic UI elements
+- Implemented reusable retry mechanism to handle `TimeoutException` and unstable page states
+- Designed booking logic based on button state (`Booked`, `Waitlisted`, `Join Waitlist`, `Book`)
+- Parsed dynamic page structure using CSS selectors and XPath to extract class metadata (name, date)
+- Automated selection of specific classes (e.g. all Tuesday sessions + targeted Thursday time slot)
+- Implemented state tracking for booked, waitlisted, and already processed classes
+- Built post-booking verification by cross-checking results on the "My Bookings" page
+- Ensured idempotent behavior by skipping already booked/waitlisted classes
+
+![gym_authomation_01](readme_data/gym_authomation_01.gif)
+
+[Open](gym_authomation/)
+
+---
+
 ### 📌Cookie Clicker Automation Bot (Selenium)
 
 A Python automation bot that plays Cookie Clicker using Selenium, simulating user clicks, managing upgrades, and optimizing in-game progress over time.
