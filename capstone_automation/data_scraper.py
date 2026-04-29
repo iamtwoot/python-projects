@@ -20,7 +20,7 @@ class DataScraper:
     def get_data(self):
         listings = self.get_listings()
 
-        for i, listing in enumerate(listings, start=1):
+        for i, listing in enumerate(listings[:5], start=1):
 
             link_el = listing.select_one("a")
             link = link_el.get("href") if link_el else None
