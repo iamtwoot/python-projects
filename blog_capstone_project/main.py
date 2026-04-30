@@ -12,6 +12,7 @@ post_objects = [Post(post["id"], post["title"], post["subtitle"], post["body"]) 
 def home():
     return render_template("index.html", posts=post_objects)
 
+
 @app.route("/post/<int:index>")
 def show_post(index):
     requested_post = None
