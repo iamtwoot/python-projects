@@ -13,6 +13,7 @@
         </div>
     </div>
 </header>
+
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -26,8 +27,8 @@
                     </a>
                     <p class="post-meta">
                         Posted by
-                        <a href="#!">Start Bootstrap</a>
-                        on September 24, 2023
+                        <a href="#!">{{ post.author }}</a>
+                        on {{ post.date }}
                     </p>
                 </div>
             {% endfor %}
