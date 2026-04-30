@@ -11,7 +11,7 @@ def home():
     return render_template("index.html", posts=all_posts)
 
 @app.route("/post/<int:post_id>")
-def get_post(post_id):
+def show_post(post_id):
     post = all_posts[post_id]
     return render_template("post.html", post=post)
 
