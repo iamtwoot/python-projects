@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-<!--Don't forget your import here-->
 {% block title %}Add A New Cafe{% endblock %}
 
 {% block content %}
@@ -9,7 +8,8 @@
 
       <h1>Add a new cafe into the database</h1>
 
-      <!-- This is where your WTForm will go -->
+        {{ form.cafe.label }} {{ form.cafe }}
+        {{ form.submit }}
 
 	  <p class="space-above"><a href="#">See all cafes</a></p>
 
