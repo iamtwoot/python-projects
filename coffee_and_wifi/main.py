@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms import StringField, SubmitField, FieldList, FormField
+from wtforms.validators import DataRequired, URL
 import csv
 
 app = Flask(__name__)
@@ -9,7 +9,13 @@ app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 
 
 class CafeForm(FlaskForm):
-    cafe = StringField('Cafe name', validators=[DataRequired()])
+    cafe_name = StringField('Cafe name', validators=[DataRequired()])
+    cafe_location = StringField('Cafe location', validators=[DataRequired(), URL()])
+    opening_time = StringField('Opening Time e.g. 8AM', validators=[DataRequired()])
+    closing_time = StringField('Closing Time e.g. 5:30PM', validators=[DataRequired()])
+    coffee_rating = StringField('Coffee Rating', validators=[DataRequired()])
+    wifi_rating = StringField('WiFi Strength Rating', validators=[DataRequired()])
+    power_rating = StringField('Power Socket Availability', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 # Exercise:
@@ -27,7 +33,7 @@ def home():
     return render_template("index.html")
 
 
-@app.route('/add')
+@app.route('/add', methods=['GET', 'POST'])
 def add_cafe():
     form = CafeForm()
     if form.validate_on_submit():

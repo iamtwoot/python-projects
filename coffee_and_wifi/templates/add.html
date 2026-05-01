@@ -2,19 +2,38 @@
 {% block title %}Add A New Cafe{% endblock %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-8">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-8">
 
-      <h1>Add a new cafe into the database</h1>
+                <h1>Add a new cafe into the database</h1>
 
-        {{ form.cafe.label }} {{ form.cafe }}
-        {{ form.submit }}
+                <form action="{{ url_for('add_cafe') }}" method="POST" novalidate>
+                    {{ form.hidden_tag() }}
 
-	  <p class="space-above"><a href="#">See all cafes</a></p>
+                    {% for field in form if field.type not in ['CSRFTokenField', 'HiddenField'] %}
 
+                        {% if field.type == 'SubmitField' %}
+                            {{ field(class='btn btn-primary') }}
+                        {% else %}
+                            <div class="mb-3">
+                                {{ field.label(class="form-label") }}
+                                {{ field(class="form-control") }}
+
+                                {% for error in field.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                    {% endfor %}
+                </form>
+
+
+                <p class="space-above"><a href="#">See all cafes</a></p>
+
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 {% endblock %}
