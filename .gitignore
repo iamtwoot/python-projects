@@ -14,8 +14,6 @@ venv.bak/
 # IDE
 .idea
 
-# Practice projects
-pracc/
 
 # Cache
 .cache
