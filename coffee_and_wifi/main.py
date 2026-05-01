@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, FieldList, FormField
+from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired, URL
 import csv
 
@@ -13,9 +13,21 @@ class CafeForm(FlaskForm):
     cafe_location = StringField('Cafe location', validators=[DataRequired(), URL()])
     opening_time = StringField('Opening Time e.g. 8AM', validators=[DataRequired()])
     closing_time = StringField('Closing Time e.g. 5:30PM', validators=[DataRequired()])
-    coffee_rating = StringField('Coffee Rating', validators=[DataRequired()])
-    wifi_rating = StringField('WiFi Strength Rating', validators=[DataRequired()])
-    power_rating = StringField('Power Socket Availability', validators=[DataRequired()])
+    coffee_rating = SelectField(
+        'Coffee Rating',
+        choices=[(0, "✘"), (1, "☕"), (2, "☕☕"), (3, "☕☕☕"), (4, "☕☕☕☕☕"), (5, "☕☕☕☕☕")],
+        validators=[DataRequired()],
+    )
+    wifi_rating = SelectField(
+        'WiFi Strength Rating',
+        choices=[(0, "✘"), (1, "💪"), (2, "💪💪"), (3, "💪💪💪"), (4, "💪💪💪💪"), (5, "💪💪💪💪💪")],
+        validators=[DataRequired()],
+    )
+    power_rating = SelectField(
+        'Power Socket Availability',
+        choices=[(0, "✘"), (1, "🔌"), (2, "🔌🔌"), (3, "🔌🔌🔌"), (4, "🔌🔌🔌🔌"), (5, "🔌🔌🔌🔌🔌")],
+        validators=[DataRequired()],
+    )
     submit = SubmitField('Submit')
 
 # Exercise:
