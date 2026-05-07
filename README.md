@@ -19,6 +19,21 @@ Early projects created during my learning journey. They reflect my progress and 
 
 ---
 
+### 📌 Flask Book Library (CRUD Web Application)
+
+A full-stack web application built with Flask that allows users to manage a personal book library with create, read, update, and delete functionality backed by a SQLite database.
+
+- Built a complete CRUD system for managing books (title, author, rating)
+- Implemented dynamic web pages using Flask templates (`Jinja2`)
+- Added ability to create new book entries via HTML forms
+- Enabled editing of book ratings through dynamic routing and query parameters
+- Implemented secure deletion of records with database persistence
+- Displayed all stored books on the main dashboard with real-time database queries
+
+[Open](library_project/)
+
+---
+
 ### 📌 Real Estate Data Scraper & Form Automation Pipeline (Selenium + BeautifulSoup)
 
 A Python automation pipeline that scrapes real estate listings from a website and automatically submits the collected data into a Google Form using browser automation.
@@ -82,7 +97,7 @@ A Python automation script that creates Spotify playlists based on Billboard Hot
 
 ---
 
-### <a id="workout-tracker"></a>📌 Exercise Tracker with API Integration
+### 📌 Exercise Tracker with API Integration
 
 A Python application that tracks physical activity by processing natural language input and logging structured workout data via external APIs.
 
@@ -97,7 +112,7 @@ A Python application that tracks physical activity by processing natural languag
 
 ---
 
-### <a id="quiz-app"></a>📌 Quiz App (Tkinter + API)
+### 📌 Quiz App (Tkinter + API)
 
 A desktop quiz application that fetches real-time questions from an external API and provides an interactive user interface with immediate feedback and score tracking.
 
@@ -118,7 +133,7 @@ This is the updated version of [Quiz Game](#quiz-game).
 
 ---
 
-### <a id="iss-notifier"></a>📌 ISS Overhead Notifier
+### 📌 ISS Overhead Notifier
 
 A Python automation script that checks the position of the International Space Station (ISS) relative to your location and sends an email alert when it is overhead during nighttime.
 
@@ -148,7 +163,7 @@ A Python automation script that sends personalized birthday emails using data-dr
 
 ---
 
-### <a id="flash-cards-app"></a>📌 Flash Cards App (Tkinter GUI)
+### 📌 Flash Cards App (Tkinter GUI)
 
 A desktop flashcard application for learning languages with spaced repetition logic and persistent progress tracking.
 
@@ -165,7 +180,7 @@ A desktop flashcard application for learning languages with spaced repetition lo
 
 ---
 
-### <a id="password-manager"></a>📌 Password Manager (Tkinter GUI)
+### 📌 Password Manager (Tkinter GUI)
 
 A desktop application for generating, storing, and retrieving passwords with structured data persistence and user-friendly interaction.
 
@@ -184,7 +199,7 @@ A desktop application for generating, storing, and retrieving passwords with str
 
 ---
 
-### <a id="pomodoro-timer"></a>📌 Pomodoro Timer (Tkinter GUI)
+### 📌 Pomodoro Timer (Tkinter GUI)
 
 A desktop application implementing the Pomodoro time management technique with automated session control.
 
@@ -215,7 +230,7 @@ A simple desktop application that converts kilometers to miles through a graphic
 
 ---
 
-### <a id="nato-alphabet"></a>📌 NATO Phonetic Alphabet Converter
+### 📌 NATO Phonetic Alphabet Converter
 
 A Python script that converts user input into its NATO phonetic alphabet representation using structured data.
 
@@ -333,7 +348,7 @@ Generates dot paintings in the Damien Hirst style. Focused on working with graph
 
 ---
 
-### <a id="quiz-game"></a>📌 Quiz Game
+### 📌 Quiz Game
 
 Console-based quiz game where you answer either True or False. The list of questions is fixed and sourced from an Trivia DB API.
 
