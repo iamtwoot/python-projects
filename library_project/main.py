@@ -60,6 +60,15 @@ def edit():
         book_selected = db.get_or_404(Book, book_id)
         return render_template('edit_rating.html', book=book_selected)
 
+@app.route("/delete")
+def delete():
+    book_id = request.args.get('id')
+    book_to_delete = db.get_or_404(Book, book_id)
+    db.session.delete(book_to_delete)
+    db.session.commit()
+    flash('Book deleted successfully', 'success')
+    return redirect(url_for('home'))
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
