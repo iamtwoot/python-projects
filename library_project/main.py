@@ -46,18 +46,19 @@ def add():
         return redirect(url_for('home'))
     return render_template('add.html')
 
-@app.route("/edit/<book_id>", methods=['GET', 'POST'])
-def edit(book_id):
+@app.route("/edit", methods=['GET', 'POST'])
+def edit():
     if request.method == 'POST':
-        new_rating = int(request.form['new_rating'])
-        book = db.get_or_404(Book, book_id)
-        book.rating = new_rating
+        book_id = request.form['id']
+        book_to_update = db.get_or_404(Book, book_id)
+        book_to_update.rating = int(request.form['new_rating'])
         db.session.commit()
         flash('Rating updated successfully', 'success')
         return redirect(url_for('home'))
     else:
-        book = db.get_or_404(Book, book_id)
-        return render_template('edit_rating.html', book=book)
+        book_id = request.args.get('id')
+        book_selected = db.get_or_404(Book, book_id)
+        return render_template('edit_rating.html', book=book_selected)
 
 if __name__ == "__main__":
     with app.app_context():

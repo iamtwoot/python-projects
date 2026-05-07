@@ -19,15 +19,14 @@
 <h1>My Library</h1>
 {% if not books %}
     <p>Library is empty.</p>
-{% else %}
+{% endif %}
     <ul>
         {% for book in books %}
             <li>{{ book['title'] }} - {{ book['author'] }} - {{ book['rating'] }}/10
-                <a href="{{ url_for('edit', book_id=book.id) }}">Edit rating</a>
+                <a href="{{ url_for('edit', id=book.id) }}">Edit rating</a>
             </li>
         {% endfor %}
     </ul>
-{% endif %}
 
 <a href="{{ url_for('add') }}">Add New Book</a>
 </body>
