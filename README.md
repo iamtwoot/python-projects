@@ -19,6 +19,24 @@ Early projects created during my learning journey. They reflect my progress and 
 
 ---
 
+### 📌 Movie Collection Web App (Flask + TMDB API)
+
+A Flask-based web application for managing a personal movie collection with external API integration, dynamic ranking, and persistent database storage.
+
+- Built a complete movie management system with create, update, and delete functionality
+- Integrated with the TMDB API to dynamically search and retrieve movie metadata
+- Implemented multi-step movie addition flow:
+  - search movie by title
+  - select matching result
+  - fetch detailed metadata
+  - save movie to local database
+- Displayed ranked movie list sorted dynamically by rating
+- Allowed users to edit ratings and reviews through form-based interactions
+
+[Open](top_movies/)
+
+---
+
 ### 📌 Flask Book Library (CRUD Web Application)
 
 A full-stack web application built with Flask that allows users to manage a personal book library with create, read, update, and delete functionality backed by a SQLite database.
@@ -29,6 +47,8 @@ A full-stack web application built with Flask that allows users to manage a pers
 - Enabled editing of book ratings through dynamic routing and query parameters
 - Implemented secure deletion of records with database persistence
 - Displayed all stored books on the main dashboard with real-time database queries
+
+![top_movies](readme_data/top_movies_01.gif)
 
 [Open](library_project/)
 
