@@ -99,8 +99,8 @@ def home():
     result = db.session.execute(db.select(Movie).order_by(Movie.rating.desc()))
     all_movies = result.scalars().all()
 
-    for movie in all_movies:
-        movie.ranking = all_movies.index(movie) + 1
+    for rank, movie in enumerate(all_movies, start=1):
+        movie.ranking = rank
 
     db.session.commit()
     return render_template("index.html", movies=all_movies)
