@@ -7,15 +7,28 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 
-
 # CREATE DB
+class Base(DeclarativeBase):
+    pass
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///movies.db'
+db = SQLAlchemy(model_class=Base)
+db.init_app(app)
 
 
 # CREATE TABLE
+class Movie(db.Model):
+    __tablename__ = 'movie'
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    title: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
+    year: Mapped[int] = mapped_column(Integer, nullable=False)
+    description: Mapped[str] = mapped_column(String(250))
+    rating: Mapped[float] = mapped_column(Float, nullable=False)
+    ranking: Mapped[int] = mapped_column(Integer, nullable=False)
+    review: Mapped[str] = mapped_column(String(250), nullable=False)
+    img_url: Mapped[str] = mapped_column(String(250), nullable=False)
 
 
 @app.route("/")
@@ -24,4 +37,8 @@ def home():
 
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+
+
     app.run(debug=True)
