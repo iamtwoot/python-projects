@@ -2,7 +2,7 @@ import os
 import smtplib
 import bleach
 from dotenv import load_dotenv
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Text
@@ -83,8 +83,26 @@ def add_new_post():
         )
         db.session.add(new_post)
         db.session.commit()
-        return redirect("/")
+        return redirect(url_for("get_all_posts"))
     return render_template("make-post.html", form=form)
+
+
+@app.route("/edit-post/<int:post_id>", methods=["GET", "POST"])
+def edit_post(post_id):
+    post = db.get_or_404(BlogPost, post_id)
+    edit_form = PostForm(obj=post)
+
+    if edit_form.validate_on_submit():
+        clean_body = cleanify(edit_form.body.data)
+
+        post.title = edit_form.title.data
+        post.subtitle = edit_form.subtitle.data
+        post.img_url = edit_form.img_url.data
+        post.author = edit_form.author.data
+        post.body = clean_body
+        db.session.commit()
+        return redirect(url_for("show_post", post_id=post_id))
+    return render_template("make-post.html", form=edit_form, post=post)
 
 
 @app.route("/about")
