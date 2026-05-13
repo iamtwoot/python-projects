@@ -44,15 +44,15 @@ class BlogPost(db.Model):
 with app.app_context():
     db.create_all()
 
-
 ckeditor = CKEditor(app)
+
+
 class PostForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     subtitle = StringField("Subtitle", validators=[DataRequired()])
     author = StringField("Author", validators=[DataRequired()])
     img_url = StringField("URL", validators=[DataRequired(), URL()])
     body = CKEditorField("Body", validators=[DataRequired()])
-
 
 
 @app.route('/')
@@ -74,12 +74,12 @@ def add_new_post():
     if form.validate_on_submit():
         clean_body = cleanify(form.body.data)
         new_post = BlogPost(
-            title = form.title.data,
-            subtitle = form.subtitle.data,
-            author = form.author.data,
-            img_url = form.img_url.data,
-            body = clean_body,
-            date = date.today().strftime("%B %d, %Y"),
+            title=form.title.data,
+            subtitle=form.subtitle.data,
+            author=form.author.data,
+            img_url=form.img_url.data,
+            body=clean_body,
+            date=date.today().strftime("%B %d, %Y"),
         )
         db.session.add(new_post)
         db.session.commit()
